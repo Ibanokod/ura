@@ -73,10 +73,21 @@ ici. Lancer `npm audit` avant chaque déploiement.
   feuille centrée sur grand écran, fond d'écran de l'accueil (dernière carte ou carte épinglée)
 - [x] Étape 10 : PWA : `vite-plugin-pwa`, manifeste, icônes (`npm run icons`, Edge headless),
   service worker, CSP et `noindex` en production ; `npm audit` : 0 vulnérabilité
-- [ ] Hébergement GitHub Pages (`Ibanokod/ura`, workflow prêt) : **en attente de l'accord
-  explicite d'Iban** pour créer le dépôt public et pousser
+- [x] Hébergement GitHub Pages : dépôt public `Ibanokod/ura` créé et poussé le 21/09/2026
+  (soir) avec l'accord d'Iban ; Pages en mode « GitHub Actions » ;
+  adresse : https://ibanokod.github.io/ura/
+- [ ] Installation sur le téléphone d'Iban (Chrome Android : « Ajouter à l'écran d'accueil »)
+  et vérification du service worker en conditions réelles (le navigateur intégré de Claude
+  ne les enregistre pas)
 - [ ] Validation visuelle finale par Iban, puis DESIGN.md passe en « acté »
 - [ ] Étape 11 : clôture (cartographie, état, commit)
+
+## Déployer
+
+Tout push sur `main` déclenche le workflow (tests, build, publication) ; suivre avec
+`gh run list` / `gh run watch`. Avant de pousser : `npm test`, `npm run build`, `npm audit`,
+et relire le diff pour s'assurer qu'aucun nom d'infrastructure Miatu ni donnée personnelle
+ne part dans le dépôt public.
 
 Vérifié le 21/09/2026 dans le navigateur intégré (parcours piloté par script) : carte à
 0,5 L et 1 L, booster à 1,5 L (5 cartes distinctes, bilan), carte ☆ à 2 L, suppression puis
