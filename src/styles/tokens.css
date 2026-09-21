@@ -1,0 +1,83 @@
+/* Tokens de design : valeurs issues de DESIGN.md. Modifier ici, jamais en dur ailleurs. */
+:root {
+  color-scheme: dark;
+
+  /* Fonds et bordures */
+  --bg: #0b1220;
+  --surface: #141c2e;
+  --surface-2: #1c2740;
+  --border: rgba(233, 238, 247, 0.08);
+  --border-strong: rgba(233, 238, 247, 0.16);
+
+  /* Texte */
+  --text: #e9eef7;
+  --text-muted: #9aa7bd;
+  --text-on-accent: #071018;
+
+  /* Eau (action principale) */
+  --water: #3ec1f3;
+  --water-deep: #1b7fd1;
+  --water-glow: rgba(62, 193, 243, 0.35);
+
+  /* Raretés (cartes et révélation uniquement) */
+  --rarity-diamond: #c9d6e8;
+  --rarity-star: #f2c14e;
+  --rarity-shiny: #e38bf0;
+  --rarity-crown: #ffd166;
+
+  /* États */
+  --success: #4ade80;
+  --danger: #f87171;
+
+  /* Typographie */
+  --font: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fs-xs: 0.75rem;   /* 12 */
+  --fs-sm: 0.875rem;  /* 14 */
+  --fs-md: 1rem;      /* 16 */
+  --fs-lg: 1.25rem;   /* 20 */
+  --fs-xl: 1.75rem;   /* 28 */
+  --fs-2xl: 2.5rem;   /* 40 */
+  --fs-3xl: 3.5rem;   /* 56 */
+
+  /* Espacement (grille de 4 px) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+
+  /* Formes */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+  --card-ratio: 63 / 88;
+  --r-card: 4.8% / 3.4%;
+
+  /* Ombres */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 8px 30px rgba(0, 0, 0, 0.5);
+
+  /* Mouvement */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur: 250ms;
+  --dur-slow: 600ms;
+
+  /* Mise en page */
+  --app-max-width: 480px;
+  --tabbar-height: 64px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --touch: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+  }
+}

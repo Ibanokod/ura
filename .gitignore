@@ -1,0 +1,12 @@
+# Dépendances et build
+node_modules/
+dist/
+
+# Fichiers locaux (jamais de secret dans ce projet, garde-fou quand même)
+*.local
+.env*
+
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini
