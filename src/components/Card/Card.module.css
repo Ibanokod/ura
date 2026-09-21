@@ -1,0 +1,116 @@
+.card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--card-ratio);
+  perspective: 1200px;
+  border-radius: var(--r-card);
+  transition: box-shadow var(--dur-slow) var(--ease);
+}
+
+/* Les faces ne reçoivent pas les clics : c'est le bouton (boîte plate, sans 3D) qui les prend,
+   ce qui évite les ratés de détection sur les éléments en perspective. */
+.inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  transition: transform var(--dur-slow) var(--ease);
+  pointer-events: none;
+}
+
+.faceUp {
+  transform: rotateY(0deg);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.front {
+  background: var(--surface-2);
+}
+
+.front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fallback {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  text-align: center;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--text);
+}
+
+.back {
+  transform: rotateY(180deg);
+  background: var(--surface-2);
+  border: 2px solid var(--border-strong);
+}
+
+.backArt {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6%;
+  background-image: radial-gradient(rgba(62, 193, 243, 0.16) 1px, transparent 1.6px);
+  background-size: 12px 12px;
+}
+
+.backWord {
+  font-size: clamp(8px, 9cqw, 16px);
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: rgba(233, 238, 247, 0.55);
+}
+
+/* Halos de rareté : seul effet lumineux de l'appli, uniquement carte visible. */
+.glowDiamond {
+  box-shadow: 0 0 28px rgba(201, 214, 232, 0.3);
+}
+
+.glowStar {
+  box-shadow: 0 0 36px rgba(242, 193, 78, 0.55);
+}
+
+.glowShiny {
+  box-shadow: 0 0 36px rgba(227, 139, 240, 0.55);
+}
+
+.glowCrown {
+  box-shadow:
+    0 0 44px rgba(255, 209, 102, 0.7),
+    0 0 90px rgba(227, 139, 240, 0.35);
+}
+
+/* Balayage lumineux unique à la révélation d'une carte ☆ ou mieux. */
+.sweep::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.32) 50%, transparent 60%);
+  transform: translateX(-100%);
+  animation: sweep var(--dur-slow) var(--ease) var(--dur-slow) 1 forwards;
+}
+
+@keyframes sweep {
+  to {
+    transform: translateX(100%);
+  }
+}

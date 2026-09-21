@@ -1,0 +1,33 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.symbol {
+  letter-spacing: 0.05em;
+}
+
+.label {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+
+.diamond {
+  color: var(--rarity-diamond);
+}
+
+.star {
+  color: var(--rarity-star);
+}
+
+.shiny {
+  color: var(--rarity-shiny);
+}
+
+.crown {
+  color: var(--rarity-crown);
+}

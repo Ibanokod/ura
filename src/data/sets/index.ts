@@ -37,14 +37,30 @@ export function listSets(): SetData[] {
   return Object.values(SETS)
 }
 
+const indexCache = new WeakMap<SetData, Map<string, CardData>>()
+
+/** Carte par id, avec un index construit une seule fois par extension. */
+export function cardById(set: SetData, id: string): CardData | undefined {
+  let index = indexCache.get(set)
+  if (!index) {
+    index = new Map(set.cards.map((card) => [card.id, card]))
+    indexCache.set(set, index)
+  }
+  return index.get(id)
+}
+
 export type ImageQuality = 'low' | 'high'
 
 export function cardImageUrl(card: Pick<CardData, 'image'>, quality: ImageQuality): string {
   return `${card.image}/${quality}.webp`
 }
 
-export function setSymbolUrl(set: SetData): string | null {
-  return set.symbol ? `${set.symbol}.webp` : null
+/**
+ * Symbole de l'extension (64 px). L'API renvoie une base « univ » qui n'existe pas sur le CDN
+ * pour Pocket (vérifié le 21/09/2026) : on construit l'URL localisée, qui existe.
+ */
+export function setSymbolUrl(set: SetData): string {
+  return `https://assets.tcgdex.net/fr/tcgp/${set.id}/symbol.webp`
 }
 
 /** Liste les problèmes d'un jeu de données (vide = tout va bien). */

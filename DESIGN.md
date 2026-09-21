@@ -7,7 +7,8 @@
 
 Direction choisie par Iban le 21/09/2026 : **sombre, inspiré de l'ambiance de Pokémon TCG
 Pocket** (bleu nuit, accents dorés pour les raretés, eau lumineuse), sans copier les assets
-du jeu. Valeurs proposées ci-dessous, **à acter sur la capture du premier écran** (étape 5).
+du jeu. Valeurs ci-dessous appliquées dans les trois écrans et la révélation (21/09/2026),
+**en attente de validation visuelle d'Iban sur la démo locale** avant de passer en « acté ».
 Les valeurs vivent dans `src/styles/tokens.css` ; ce fichier explique le pourquoi.
 
 ## Principes

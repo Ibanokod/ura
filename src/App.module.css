@@ -1,0 +1,17 @@
+.app {
+  position: relative;
+  min-height: 100dvh;
+  max-width: var(--app-max-width);
+  margin: 0 auto;
+}
+
+.main {
+  padding: var(--sp-4) var(--sp-4) calc(var(--tabbar-height) + var(--safe-bottom) + var(--sp-8));
+}
+
+@media (min-width: 600px) {
+  .app {
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+}
