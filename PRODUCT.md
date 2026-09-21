@@ -22,7 +22,9 @@ Pokédex.
 | Doublons | Jamais : le tirage ne propose que des cartes manquantes dans la rareté tirée |
 | Révélation | Comme le jeu : face cachée, un tap retourne la suivante, bouton « Tout révéler » |
 | Données | Dans le navigateur (localStorage) + export / import JSON ; pas de compte |
-| Usage | Local (`npm run dev`) pour l'instant ; build statique prêt pour un hébergement plus tard ; PWA pour le téléphone |
+| Usage | Appli web installable (PWA) ; hébergement statique GitHub Pages sur le compte Ibanokod (décision du 21/09/2026, soir) ; `npm run dev` en local |
+| Fiche de carte | Sous la carte à la révélation et dans le détail du Pokédex : PV, type, stade, talents, attaques (coût, dégâts, effet), faiblesse, retraite, description, illustrateur, paquet |
+| Fond d'écran | L'accueil affiche en fond, floutée et fondue, la dernière carte obtenue ; une carte possédée peut être épinglée depuis le Pokédex |
 | Journée | Change à minuit, heure locale de l'appareil |
 
 ## Écrans
@@ -140,11 +142,24 @@ révéler (la plus ancienne avec `seen: false`), progression du Pokédex.
 Deux cartes de A1 (Grodoudou-ex 265 et 279) sont « Sans Rareté » chez TCGdex : le script les
 force en Deux Étoiles, comme toutes leurs voisines (correction visible dans `OVERRIDES`).
 
+## Installation sur le téléphone et hébergement
+
+- L'appli est une PWA (`vite-plugin-pwa`) : manifeste, icônes 192 / 512 / maskable, service
+  worker qui précache la coquille et met en cache les images de cartes à la volée (90 jours).
+  Sur Android, Chrome propose « Ajouter à l'écran d'accueil » ; l'appli s'ouvre plein écran.
+- Hébergement : GitHub Pages depuis le dépôt `Ibanokod/ura` (public : code seulement, jamais
+  de données), déploiement automatique par GitHub Actions à chaque push sur `main`
+  (`.github/workflows/deploy.yml`, build avec `BASE_PATH=/ura/`). Rien chez Miatu.
+- Sécurité (exigence d'Iban) : aucun secret ni backend ; données uniquement dans le
+  navigateur de l'appareil ; page `noindex` ; politique de sécurité du contenu (CSP) en
+  production : scripts et styles de l'appli seulement, images depuis `assets.tcgdex.net`
+  uniquement, aucune connexion sortante, aucun cadre, aucun formulaire externe ; `referrer`
+  masqué ; workflow avec permissions minimales ; `npm audit` sans vulnérabilité au
+  21/09/2026.
+
 ## Hors périmètre v1
 
 - Autres extensions et choix du paquet (Mewtwo, Dracaufeu, Pikachu) : `boosters` existe
   côté TCGdex, `setId` est déjà dans les réglages.
-- Hébergement (GitHub Pages sur le compte Ibanokod, dépôt public, code seulement),
-  installation PWA sur le téléphone, enveloppe Capacitor si une vraie appli Android devient
-  utile.
+- Enveloppe Capacitor si une vraie appli Android (Play Store) devient utile.
 - Rappels et notifications, synchronisation entre appareils, points de paquet.

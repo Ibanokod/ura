@@ -1,8 +1,12 @@
 // Accès aux extensions embarquées. Le JSON est produit par scripts/fetch-cards.mjs ;
-// on le typpe ici et on fournit une validation utilisée par les tests.
+// on le type ici et on fournit une validation utilisée par les tests.
 
 import { isRarity, type Rarity } from '../../lib/rarity'
 import A1 from './A1.json'
+
+export type Attack = { name: string; cost: string[]; damage: string | null; effect: string | null }
+export type Ability = { type: string; name: string; effect: string }
+export type Weakness = { type: string; value: string }
 
 export type CardData = {
   id: string
@@ -11,6 +15,30 @@ export type CardData = {
   /** Base de l'image TCGdex, sans extension : on y ajoute /low.webp ou /high.webp. */
   image: string
   rarity: Rarity
+  /** « Pokémon » ou « Dresseur ». */
+  category: string
+  illustrator: string | null
+  dexId: number[]
+  hp: number | null
+  /** Types d'énergie en français (Plante, Feu, Eau...). */
+  types: string[]
+  /** « Base », « Niveau 1 », « Niveau 2 ». */
+  stage: string | null
+  evolveFrom: string | null
+  /** « EX » pour les Pokémon-ex. */
+  suffix: string | null
+  abilities: Ability[]
+  attacks: Attack[]
+  weaknesses: Weakness[]
+  retreat: number | null
+  /** Texte d'ambiance du Pokémon. */
+  description: string | null
+  /** Dresseurs : « Supporter », « Objet »... */
+  trainerType: string | null
+  /** Dresseurs : effet de la carte. */
+  effect: string | null
+  /** Noms des paquets où la carte apparaît (Mewtwo, Dracaufeu, Pikachu). */
+  boosters: string[]
 }
 
 export type SetData = {
@@ -73,6 +101,9 @@ export function validateSet(set: SetData): string[] {
     if (!isRarity(card.rarity)) problems.push(`rareté inconnue pour ${card.id} : ${String(card.rarity)}`)
     if (Number(card.localId) !== index + 1) problems.push(`ordre inattendu : ${card.id} en position ${index + 1}`)
     if (!card.image.startsWith('https://')) problems.push(`image absente pour ${card.id}`)
+    if (card.category !== 'Pokémon' && card.category !== 'Dresseur') problems.push(`catégorie inattendue pour ${card.id} : ${card.category}`)
+    if (card.category === 'Pokémon' && (card.hp === null || card.types.length === 0)) problems.push(`Pokémon incomplet : ${card.id}`)
+    if (card.category === 'Dresseur' && !card.effect) problems.push(`Dresseur sans effet : ${card.id}`)
   })
   if (set.cardCount && set.cards.length !== set.cardCount.total) {
     problems.push(`${set.cards.length} cartes pour ${set.cardCount.total} attendues`)

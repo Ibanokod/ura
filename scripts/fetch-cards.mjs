@@ -1,18 +1,18 @@
 // Récupère les cartes d'une extension Pokémon TCG Pocket depuis l'API TCGdex (français)
-// et écrit src/data/sets/<ID>.json. Node seul, aucune dépendance.
+// et écrit src/data/sets/<ID>.json avec le détail complet de chaque carte (PV, type, stade,
+// talents, attaques, faiblesse, retraite, description, illustrateur ; effet pour les
+// Dresseurs). Node seul, aucune dépendance.
 //
 // Usage : node scripts/fetch-cards.mjs [A1]
 //
-// Pourquoi une requête par rareté : l'endpoint « set » ne donne pas la rareté des cartes,
-// et l'endpoint « cards » filtré la donne implicitement (on sait ce qu'on a demandé).
-// Piège vérifié le 21/09/2026 : le filtre set.id est un « contient » (A1 attrape aussi
-// A1a), d'où le contrôle strict sur le préfixe de l'id.
+// Une requête par carte (286 pour A1), six en parallèle : une dizaine de secondes.
 
 import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const API = 'https://api.tcgdex.net/v2/fr'
+const CONCURRENCY = 6
 const RARITIES = [
   'Un Diamant',
   'Deux Diamants',
@@ -38,32 +38,67 @@ const setId = process.argv[2] ?? 'A1'
 const here = dirname(fileURLToPath(import.meta.url))
 const outFile = resolve(here, '../src/data/sets', `${setId}.json`)
 
-async function getJson(url) {
+async function getJson(url, attempt = 1) {
   const res = await fetch(url)
+  if (res.status === 429 || res.status >= 500) {
+    if (attempt >= 3) throw new Error(`HTTP ${res.status} pour ${url} après ${attempt} essais`)
+    await new Promise((r) => setTimeout(r, 800 * attempt))
+    return getJson(url, attempt + 1)
+  }
   if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText} pour ${url}`)
   return res.json()
 }
 
-const set = await getJson(`${API}/sets/${encodeURIComponent(setId)}`)
-
-const cards = []
-for (const rarity of RARITIES) {
-  const url = `${API}/cards?set.id=${encodeURIComponent(setId)}&rarity=${encodeURIComponent(rarity)}`
-  const list = await getJson(url)
-  for (const c of list) {
-    if (!c.id.startsWith(`${setId}-`)) continue
-    cards.push({ id: c.id, localId: c.localId, name: c.name, image: c.image, rarity })
+/** Applique fn à chaque élément, au plus `limit` à la fois, en gardant l'ordre. */
+async function mapLimit(items, limit, fn) {
+  const out = new Array(items.length)
+  let next = 0
+  async function worker() {
+    while (next < items.length) {
+      const index = next++
+      out[index] = await fn(items[index], index)
+    }
   }
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker))
+  return out
 }
-// Cartes de l'extension absentes du tirage par rareté : corrigées si prévues, sinon signalées.
-const seen = new Set(cards.map((c) => c.id))
+
+const set = await getJson(`${API}/sets/${encodeURIComponent(setId)}`)
+console.log(`${set.name} (${set.id}) : ${set.cards.length} cartes à détailler...`)
+
 const unresolved = []
-for (const c of set.cards) {
-  if (seen.has(c.id)) continue
-  const rarity = OVERRIDES[c.id]
-  if (rarity) cards.push({ id: c.id, localId: c.localId, name: c.name, image: c.image, rarity })
-  else unresolved.push(c.id)
-}
+const cards = await mapLimit(set.cards, CONCURRENCY, async (brief) => {
+  const d = await getJson(`${API}/cards/${encodeURIComponent(brief.id)}`)
+  let rarity = RARITIES.includes(d.rarity) ? d.rarity : OVERRIDES[d.id]
+  if (!rarity) {
+    unresolved.push(`${d.id} (${d.rarity})`)
+    rarity = null
+  }
+  return {
+    id: d.id,
+    localId: d.localId,
+    name: d.name,
+    image: d.image,
+    rarity,
+    category: d.category ?? 'Pokémon',
+    illustrator: d.illustrator ?? null,
+    dexId: d.dexId ?? [],
+    hp: d.hp ?? null,
+    types: d.types ?? [],
+    stage: d.stage ?? null,
+    evolveFrom: d.evolveFrom ?? null,
+    suffix: d.suffix ?? null,
+    abilities: (d.abilities ?? []).map((a) => ({ type: a.type ?? 'Talent', name: a.name, effect: a.effect ?? '' })),
+    attacks: (d.attacks ?? []).map((a) => ({ name: a.name, cost: a.cost ?? [], damage: a.damage ?? null, effect: a.effect ?? null })),
+    weaknesses: (d.weaknesses ?? []).map((w) => ({ type: w.type, value: w.value })),
+    retreat: d.retreat ?? null,
+    description: d.description ?? null,
+    trainerType: d.trainerType ?? null,
+    effect: d.effect ?? null,
+    boosters: (d.boosters ?? []).map((b) => b.name),
+  }
+})
+
 if (unresolved.length > 0) {
   console.error(`Cartes sans rareté connue : ${unresolved.join(', ')}. Vérifier chez TCGdex et compléter OVERRIDES.`)
   process.exit(1)
@@ -79,7 +114,7 @@ if (ids.size !== cards.length) {
 
 const expected = set.cardCount?.total
 if (expected !== undefined && cards.length !== expected) {
-  console.error(`Attendu ${expected} cartes d'après TCGdex, obtenu ${cards.length}. Vérifier la liste des raretés.`)
+  console.error(`Attendu ${expected} cartes d'après TCGdex, obtenu ${cards.length}.`)
   process.exit(1)
 }
 
@@ -99,7 +134,8 @@ await writeFile(outFile, JSON.stringify(out, null, 2) + '\n', 'utf8')
 
 const byRarity = {}
 for (const c of cards) byRarity[c.rarity] = (byRarity[c.rarity] ?? 0) + 1
-console.log(`${set.name} (${set.id}) : ${cards.length} cartes -> ${outFile}`)
+const trainers = cards.filter((c) => c.category === 'Dresseur').length
+console.log(`${cards.length} cartes (${cards.length - trainers} Pokémon, ${trainers} Dresseurs) -> ${outFile}`)
 for (const r of RARITIES) {
   if (byRarity[r]) console.log(`  ${r.padEnd(18)} ${String(byRarity[r]).padStart(4)}`)
 }

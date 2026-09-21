@@ -4,6 +4,41 @@
   gap: var(--sp-4);
 }
 
+/* Fond d'écran : la dernière carte obtenue (ou la carte choisie), floutée et fondue dans le
+   fond de l'appli. Positionné par rapport à la colonne de l'appli, derrière tout le reste. */
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: min(58vh, 520px);
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  transform: scale(1.12);
+  filter: blur(14px) saturate(1.15);
+  opacity: 0.42;
+}
+
+.backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 18, 32, 0.1) 0%, rgba(11, 18, 32, 0.45) 50%, var(--bg) 100%);
+}
+
+.screen > :not(.backdrop) {
+  position: relative;
+  z-index: 1;
+}
+
 .header {
   display: flex;
   align-items: flex-start;

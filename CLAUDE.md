@@ -34,7 +34,17 @@ npm run dev        # serveur de développement (http://localhost:5173)
 npm test           # tests Vitest
 npm run build      # vérification TypeScript + build statique dans dist/
 npm run cards      # regénère src/data/sets/A1.json depuis TCGdex (node scripts/fetch-cards.mjs)
+npm run icons      # regénère public/icons/*.png avec Edge headless (node scripts/make-icons.mjs)
+npm run preview    # sert dist/ comme en production (service worker actif)
 ```
+
+## Sécurité (exigence d'Iban)
+
+Aucun secret, aucun backend, données uniquement dans le navigateur. En production : CSP
+stricte injectée au build (`vite.config.ts`), `noindex`, `referrer` masqué, images
+uniquement depuis `assets.tcgdex.net`. Workflow GitHub Actions à permissions minimales.
+Ne jamais ajouter de script, police ou style externe sans mettre la CSP à jour et le noter
+ici. Lancer `npm audit` avant chaque déploiement.
 
 ## Règles de travail
 
@@ -60,8 +70,13 @@ npm run cards      # regénère src/data/sets/A1.json depuis TCGdex (node script
 - [x] Étape 7 : révélation (carte, booster avec paquet, paquet rare, reprise après fermeture)
 - [x] Étape 8 : écran Pokédex (progression, filtres, grille, détail)
 - [x] Étape 9 : écran Historique (7 jours, jours dépliables) + réglages (export, import, reset)
-- [ ] **Validation visuelle par Iban** sur la démo locale, puis DESIGN.md passe en « acté »
-- [ ] Étape 10 : PWA (prépare le téléphone) : `vite-plugin-pwa`, manifeste, icônes, cache images
+- [x] Retours d'Iban du 21/09 (soir) : fiche détaillée sous la carte (révélation et Pokédex),
+  feuille centrée sur grand écran, fond d'écran de l'accueil (dernière carte ou carte épinglée)
+- [x] Étape 10 : PWA : `vite-plugin-pwa`, manifeste, icônes (`npm run icons`, Edge headless),
+  service worker, CSP et `noindex` en production ; `npm audit` : 0 vulnérabilité
+- [ ] Hébergement GitHub Pages (`Ibanokod/ura`, workflow prêt) : **en attente de l'accord
+  explicite d'Iban** pour créer le dépôt public et pousser
+- [ ] Validation visuelle finale par Iban, puis DESIGN.md passe en « acté »
 - [ ] Étape 11 : clôture (cartographie, état, commit)
 
 Vérifié le 21/09/2026 dans le navigateur intégré (parcours piloté par script) : carte à

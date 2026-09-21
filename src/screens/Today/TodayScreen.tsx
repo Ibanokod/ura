@@ -2,10 +2,10 @@ import { Package, RectangleVertical, Settings, Sparkles, Trash2 } from 'lucide-r
 import { useState, type FormEvent } from 'react'
 import { Card } from '../../components/Card/Card'
 import { Gauge } from '../../components/Gauge/Gauge'
-import { cardById, getSet } from '../../data/sets'
+import { cardById, cardImageUrl, getSet } from '../../data/sets'
 import { cx } from '../../lib/cx'
 import { formatLitersShort, formatTime } from '../../lib/day'
-import { selectDexStats, selectToday } from '../../state/selectors'
+import { selectBackdropCard, selectDexStats, selectToday } from '../../state/selectors'
 import { useActions, useAppState } from '../../state/store'
 import { SettingsSheet } from './SettingsSheet'
 import styles from './TodayScreen.module.css'
@@ -17,6 +17,7 @@ export function TodayScreen() {
   const set = getSet(state.settings.setId)
   const dex = selectDexStats(state, set)
   const complete = dex.owned >= dex.total
+  const backdrop = selectBackdropCard(state, set)
 
   const [showOther, setShowOther] = useState(false)
   const [other, setOther] = useState('')
@@ -36,6 +37,11 @@ export function TodayScreen() {
 
   return (
     <div className={styles.screen}>
+      {backdrop && (
+        <div className={styles.backdrop} aria-hidden="true">
+          <img key={backdrop.id} src={cardImageUrl(backdrop, 'low')} alt="" draggable={false} />
+        </div>
+      )}
       <header className={styles.header}>
         <div>
           <p className={styles.date}>{todayLabel()}</p>

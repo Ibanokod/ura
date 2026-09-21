@@ -1,7 +1,7 @@
 // Lecture et écriture de l'état dans localStorage, export et import JSON.
 // Tout est défensif : une donnée corrompue redonne un état vide plutôt qu'un plantage.
 
-import { initialState, type State } from './types'
+import { DEFAULT_SETTINGS, initialState, type State } from './types'
 
 export const STORAGE_KEY = 'ura.v1'
 
@@ -15,10 +15,15 @@ export function loadState(): State {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return initialState()
     const parsed: unknown = JSON.parse(raw)
-    return isState(parsed) ? parsed : initialState()
+    return isState(parsed) ? withDefaults(parsed) : initialState()
   } catch {
     return initialState()
   }
+}
+
+/** Complète les réglages ajoutés depuis la sauvegarde (nouveaux champs optionnels). */
+export function withDefaults(state: State): State {
+  return { ...state, settings: { ...DEFAULT_SETTINGS, ...state.settings } }
 }
 
 export function saveState(state: State): void {
@@ -72,7 +77,7 @@ export function exportJson(state: State): string {
 export function parseImport(json: string): State | null {
   try {
     const parsed: unknown = JSON.parse(json)
-    return isState(parsed) ? parsed : null
+    return isState(parsed) ? withDefaults(parsed) : null
   } catch {
     return null
   }

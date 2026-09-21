@@ -11,6 +11,7 @@ export type Action =
   | { type: 'revealCard'; rewardId: string }
   | { type: 'revealAll'; rewardId: string }
   | { type: 'closeReward'; rewardId: string }
+  | { type: 'setBackdrop'; cardId: string | null }
   | { type: 'importState'; state: State }
   | { type: 'reset' }
 
@@ -45,6 +46,10 @@ export function reducer(state: State, action: Action): State {
 
     case 'closeReward':
       return updateReward(state, action.rewardId, (r) => ({ ...r, revealed: r.cardIds.length, seen: true }))
+
+    case 'setBackdrop':
+      if (action.cardId !== null && !state.collection[action.cardId]) return state
+      return { ...state, settings: { ...state.settings, backdropCardId: action.cardId } }
 
     case 'importState':
       return action.state

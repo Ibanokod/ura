@@ -46,6 +46,21 @@ Couleurs de rareté (uniquement sur les cartes et la révélation) :
 | `--rarity-shiny` | `#E38BF0` (irisé) | ✧, ✧✧ |
 | `--rarity-crown` | `#FFD166` (or intense) + liseré irisé | ♛ |
 
+Couleurs des types d'énergie (fiche de carte uniquement : pastilles de coût, type, faiblesse) :
+
+| Token | Valeur | Type |
+|---|---|---|
+| `--type-plante` | `#5CBF60` | Plante |
+| `--type-feu` | `#F2734A` | Feu |
+| `--type-eau` | `#4AA8F0` | Eau |
+| `--type-electrique` | `#F5D547` | Électrique |
+| `--type-psy` | `#B56AD6` | Psy |
+| `--type-combat` | `#C98A52` | Combat |
+| `--type-obscurite` | `#5D6B8A` | Obscurité |
+| `--type-metal` | `#A3B1C2` | Métal |
+| `--type-dragon` | `#C9B45A` | Dragon |
+| `--type-incolore` | `#D9DEE8` | Incolore |
+
 ## Typographie
 
 - **Manrope** (variable, géométrique, chiffres tabulaires), auto-hébergée via le paquet npm
@@ -76,7 +91,17 @@ Couleurs de rareté (uniquement sur les cartes et la révélation) :
 - **Barre du bas** : 3 onglets, icônes lucide 24 px + libellé, actif en `--water`, fond
   `--surface`, bord haut `--border`, marge de sécurité iOS respectée.
 - **Feuille** (réglages, détail de carte) : glisse depuis le bas, fond `--surface-2`, coins
-  16 px en haut, poignée.
+  16 px en haut, poignée. À partir de 600 px de large, elle devient une boîte de dialogue
+  centrée (coins 16 px partout, sans poignée).
+- **Fiche de carte** (`CardInfo`) : panneau `--surface` sous la carte, comme dans le jeu :
+  stade et pré-évolution, PV en 28 px, pastilles de type, talents (étiquette or), attaques
+  (coût en pastilles, nom, dégâts en 20 px, effet en `--text-muted`), faiblesse et retraite,
+  description en italique, illustrateur et paquet en 12 px. Les énergies `{G}`, `{R}`... des
+  textes d'effet sont rendues en pastilles.
+- **Fond d'écran de l'accueil** : la dernière carte obtenue (ou la carte épinglée), image
+  `low.webp` agrandie de 12 %, floutée à 14 px, opacité 0,42, fondue vers `--bg` par un
+  dégradé vertical, sur les 58 % du haut de l'écran au plus. C'est le seul visuel décoratif
+  de l'appli, et il vient de la collection du joueur.
 - **Liste** (prises, jours) : lignes de 56 px, séparateur `--border`, heure en
   `--text-muted`, volume en chiffres tabulaires.
 
