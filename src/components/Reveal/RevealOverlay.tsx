@@ -6,6 +6,7 @@ import { selectPendingReward } from '../../state/selectors'
 import { useActions, useAppState } from '../../state/store'
 import type { Reward } from '../../state/types'
 import { Card } from '../Card/Card'
+import { CardInfo } from '../CardInfo/CardInfo'
 import { RarityBadge } from '../RarityBadge/RarityBadge'
 import styles from './RevealOverlay.module.css'
 
@@ -49,9 +50,11 @@ function Reveal({ reward }: { reward: Reward }) {
     content = (
       <>
         <div className={styles.stage}>
-          <p className={styles.complete}>
-            Collection complète ! Il n'y a plus de carte à gagner dans {set.name}. Une nouvelle extension arrivera dans les réglages.
-          </p>
+          <div className={styles.stageInner}>
+            <p className={styles.complete}>
+              Collection complète ! Il n'y a plus de carte à gagner dans {set.name}. Une nouvelle extension arrivera dans les réglages.
+            </p>
+          </div>
         </div>
         <div className={styles.footer}>
           <button type="button" className="btn btn-primary btn-block btn-lg" onClick={close}>
@@ -66,14 +69,16 @@ function Reveal({ reward }: { reward: Reward }) {
     content = (
       <>
         <div className={styles.stage}>
-          <ul className={styles.summary}>
-            {cards.map((card) => (
-              <li key={card.id}>
-                <Card card={card} faceUp quality="low" eager />
-                <RarityBadge rarity={card.rarity} className={styles.summaryBadge} />
-              </li>
-            ))}
-          </ul>
+          <div className={styles.stageInner}>
+            <ul className={styles.summary}>
+              {cards.map((card) => (
+                <li key={card.id}>
+                  <Card card={card} faceUp quality="low" eager />
+                  <RarityBadge rarity={card.rarity} className={styles.summaryBadge} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className={styles.footer}>
           <p className={styles.caption}>
@@ -96,26 +101,33 @@ function Reveal({ reward }: { reward: Reward }) {
     content = (
       <>
         <div className={styles.stage}>
-          <div className={styles.cardHolder}>
-            <Card card={current} faceUp={faceUp} glow eager onClick={onTap} />
-          </div>
-          <div className={styles.caption} aria-live="polite">
-            {faceUp ? (
-              <>
-                <strong>{current.name}</strong>
-                <RarityBadge rarity={current.rarity} withLabel />
-              </>
-            ) : (
-              <span>Touche la carte pour la retourner</span>
+          <div className={styles.stageInner}>
+            <div className={styles.cardHolder}>
+              <Card card={current} faceUp={faceUp} glow eager onClick={onTap} />
+            </div>
+            <div className={styles.caption} aria-live="polite">
+              {faceUp ? (
+                <>
+                  <strong>{current.name}</strong>
+                  <RarityBadge rarity={current.rarity} withLabel />
+                </>
+              ) : (
+                <span>Touche la carte pour la retourner</span>
+              )}
+            </div>
+            {total > 1 && (
+              <ol className={styles.dots} aria-label={`Carte ${index + 1} sur ${total}`}>
+                {cards.map((card, i) => (
+                  <li key={card.id} className={cx(styles.dot, i < reward.revealed && styles.dotDone, i === index && styles.dotCurrent)} />
+                ))}
+              </ol>
+            )}
+            {faceUp && (
+              <div className={styles.details}>
+                <CardInfo card={current} compact />
+              </div>
             )}
           </div>
-          {total > 1 && (
-            <ol className={styles.dots} aria-label={`Carte ${index + 1} sur ${total}`}>
-              {cards.map((card, i) => (
-                <li key={card.id} className={cx(styles.dot, i < reward.revealed && styles.dotDone, i === index && styles.dotCurrent)} />
-              ))}
-            </ol>
-          )}
         </div>
         <div className={styles.footer}>
           {total === 1 && faceUp && (
@@ -186,6 +198,7 @@ function Pack({ set, onOpen }: { set: SetData; onOpen: () => void }) {
   return (
     <>
       <div className={styles.stage}>
+        <div className={styles.stageInner}>
         <button
           type="button"
           className={cx(styles.pack, opening && styles.packOpening)}
@@ -211,6 +224,7 @@ function Pack({ set, onOpen }: { set: SetData; onOpen: () => void }) {
           </span>
         </button>
         <p className={styles.caption}>Touche ou glisse vers le haut pour ouvrir</p>
+        </div>
       </div>
       <div className={styles.footer}>
         <button type="button" className="btn btn-primary btn-block btn-lg" onClick={begin}>

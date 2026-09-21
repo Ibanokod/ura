@@ -2,7 +2,7 @@
 // de l'état brut (total du jour, prochaine récompense, statistiques du Pokédex...).
 // Rien n'est stocké en double : tout se recalcule.
 
-import type { SetData } from '../data/sets'
+import { cardById, type CardData, type SetData } from '../data/sets'
 import { dayKeyOf, entriesForDay, todayKey, totalForDay } from '../lib/day'
 import { RARITIES, type Rarity } from '../lib/rarity'
 import { nextReward, type NextReward } from '../lib/rewards'
@@ -40,6 +40,24 @@ export function selectDays(state: State): string[] {
   const days = new Set<string>()
   for (const e of state.entries) days.add(dayKeyOf(e.at))
   return [...days].sort((a, b) => b.localeCompare(a))
+}
+
+/** Carte affichée en fond de l'accueil : celle choisie, sinon la dernière obtenue, sinon aucune. */
+export function selectBackdropCard(state: State, set: SetData): CardData | null {
+  const chosen = state.settings.backdropCardId
+  if (chosen && state.collection[chosen]) {
+    const card = cardById(set, chosen)
+    if (card) return card
+  }
+  let latestId: string | null = null
+  let latestAt = ''
+  for (const [id, { at }] of Object.entries(state.collection)) {
+    if (at > latestAt && cardById(set, id)) {
+      latestAt = at
+      latestId = id
+    }
+  }
+  return latestId ? (cardById(set, latestId) ?? null) : null
 }
 
 export type DexStats = {

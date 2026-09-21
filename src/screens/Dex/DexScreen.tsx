@@ -1,12 +1,14 @@
+import { ImageIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Card } from '../../components/Card/Card'
+import { CardInfo } from '../../components/CardInfo/CardInfo'
 import { RarityBadge } from '../../components/RarityBadge/RarityBadge'
 import { Sheet } from '../../components/Sheet/Sheet'
 import { cardImageUrl, getSet, type CardData } from '../../data/sets'
 import { cx } from '../../lib/cx'
 import type { Rarity } from '../../lib/rarity'
 import { selectDexStats } from '../../state/selectors'
-import { useAppState } from '../../state/store'
+import { useActions, useAppState } from '../../state/store'
 import styles from './DexScreen.module.css'
 
 type Status = 'all' | 'owned' | 'missing'
@@ -102,13 +104,20 @@ export function DexScreen() {
       )}
 
       <Sheet open={selected !== null} onClose={() => setSelected(null)} title={selected ? (selected.id in state.collection ? selected.name : `Carte ${selected.localId}`) : ''}>
-        {selected && <CardDetail card={selected} obtainedAt={state.collection[selected.id]?.at} />}
+        {selected && (
+          <CardDetail
+            card={selected}
+            obtainedAt={state.collection[selected.id]?.at}
+            isBackdrop={state.settings.backdropCardId === selected.id}
+          />
+        )}
       </Sheet>
     </div>
   )
 }
 
-function CardDetail({ card, obtainedAt }: { card: CardData; obtainedAt: string | undefined }) {
+function CardDetail({ card, obtainedAt, isBackdrop }: { card: CardData; obtainedAt: string | undefined; isBackdrop: boolean }) {
+  const actions = useActions()
   return (
     <div className={styles.detail}>
       <div className={styles.detailCard}>
@@ -139,6 +148,20 @@ function CardDetail({ card, obtainedAt }: { card: CardData; obtainedAt: string |
           </div>
         )}
       </dl>
+      {obtainedAt && (
+        <>
+          <CardInfo card={card} />
+          <button
+            type="button"
+            className="btn btn-secondary btn-block"
+            aria-pressed={isBackdrop}
+            onClick={() => actions.setBackdrop(isBackdrop ? null : card.id)}
+          >
+            <ImageIcon size={18} aria-hidden="true" />
+            {isBackdrop ? "Retirer du fond d'écran" : "Mettre en fond d'écran"}
+          </button>
+        </>
+      )}
     </div>
   )
 }

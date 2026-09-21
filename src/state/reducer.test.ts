@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { exportJson, isState, parseImport } from './persistence'
 import { reducer } from './reducer'
 import { selectDay, selectPendingReward } from './selectors'
-import { initialState, type Reward, type State } from './types'
+import { DEFAULT_SETTINGS, initialState, type Reward, type State } from './types'
 
 const at = (h: number, m = 0) => new Date(2026, 8, 21, h, m).toISOString()
 
@@ -118,5 +118,21 @@ describe('export et import', () => {
   it('réinitialise tout', () => {
     const s = reducer(initialState(), { type: 'addIntake', id: 'e1', at: at(8), ml: 150 })
     expect(reducer(s, { type: 'reset' })).toEqual(initialState())
+  })
+
+  it('complète les réglages absents d’une ancienne sauvegarde', () => {
+    const old = { ...initialState(), settings: { goalMl: 1500, quickAddMl: 150, setId: 'A1' } }
+    const imported = parseImport(JSON.stringify(old))
+    expect(imported?.settings).toEqual(DEFAULT_SETTINGS)
+  })
+})
+
+describe('fond d’écran', () => {
+  it('n’accepte qu’une carte possédée, et null pour revenir à la dernière obtenue', () => {
+    let s = reducer(initialState(), { type: 'createReward', reward: reward() })
+    expect(reducer(s, { type: 'setBackdrop', cardId: 'A1-999' }).settings.backdropCardId).toBeNull()
+    s = reducer(s, { type: 'setBackdrop', cardId: 'A1-001' })
+    expect(s.settings.backdropCardId).toBe('A1-001')
+    expect(reducer(s, { type: 'setBackdrop', cardId: null }).settings.backdropCardId).toBeNull()
   })
 })

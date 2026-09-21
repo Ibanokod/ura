@@ -84,6 +84,7 @@ export function useActions() {
       revealCard: (rewardId: string) => dispatch({ type: 'revealCard', rewardId }),
       revealAll: (rewardId: string) => dispatch({ type: 'revealAll', rewardId }),
       closeReward: (rewardId: string) => dispatch({ type: 'closeReward', rewardId }),
+      setBackdrop: (cardId: string | null) => dispatch({ type: 'setBackdrop', cardId }),
       importState: (state: State) => dispatch({ type: 'importState', state }),
       reset: () => dispatch({ type: 'reset' }),
     }),

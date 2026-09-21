@@ -1,0 +1,177 @@
+.info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  text-align: left;
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+}
+
+.compact {
+  padding: var(--sp-3) var(--sp-4);
+  gap: var(--sp-2);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.hp {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-1);
+}
+
+.hpValue {
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hpLabel {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-right: var(--sp-2);
+}
+
+.ability,
+.attack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--border);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.abilityTag {
+  padding: 1px 8px;
+  border-radius: var(--r-pill);
+  background: rgba(242, 193, 78, 0.16);
+  color: var(--rarity-star);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+}
+
+.name {
+  flex: 1;
+  font-weight: 800;
+}
+
+.cost {
+  display: inline-flex;
+  gap: 3px;
+  min-width: 16px;
+}
+
+.damage {
+  font-size: var(--fs-lg);
+  font-weight: 800;
+}
+
+.effect {
+  color: var(--text-muted);
+}
+
+.trainerEffect {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--border);
+}
+
+.stats > div {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.statLabel {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.statValue {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 700;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--border);
+}
+
+.description {
+  font-style: italic;
+  color: var(--text-muted);
+  white-space: pre-line;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-4);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.energy {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+.energyMd {
+  width: 20px;
+  height: 20px;
+  align-self: center;
+}
+
+.energyInline {
+  margin: 0 2px;
+  position: relative;
+  top: -1px;
+}

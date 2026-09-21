@@ -29,6 +29,18 @@
   --success: #4ade80;
   --danger: #f87171;
 
+  /* Types d'énergie (fiche de carte uniquement) */
+  --type-plante: #5cbf60;
+  --type-feu: #f2734a;
+  --type-eau: #4aa8f0;
+  --type-electrique: #f5d547;
+  --type-psy: #b56ad6;
+  --type-combat: #c98a52;
+  --type-obscurite: #5d6b8a;
+  --type-metal: #a3b1c2;
+  --type-dragon: #c9b45a;
+  --type-incolore: #d9dee8;
+
   /* Typographie */
   --font: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --fs-xs: 0.75rem;   /* 12 */

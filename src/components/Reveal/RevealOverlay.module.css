@@ -20,6 +20,7 @@
   flex-direction: column;
   width: 100%;
   max-width: var(--app-max-width);
+  height: 100dvh;
   padding: var(--sp-8) var(--sp-4) calc(var(--sp-6) + var(--safe-bottom));
 }
 
@@ -38,18 +39,39 @@
   font-weight: 600;
 }
 
+/* La scène défile si son contenu dépasse (fiche détaillée) et reste centrée sinon :
+   c'est la marge automatique de .stageInner qui fait les deux. */
 .stage {
   flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.stage::-webkit-scrollbar {
+  display: none;
+}
+
+.stageInner {
+  margin: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: var(--sp-5);
   padding: var(--sp-4) 0;
 }
 
 .cardHolder {
   width: min(70vw, 290px);
+  flex: 0 0 auto;
+}
+
+.details {
+  width: 100%;
+  max-width: 420px;
 }
 
 .caption {
