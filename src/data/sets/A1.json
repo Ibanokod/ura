@@ -1,0 +1,2033 @@
+{
+  "id": "A1",
+  "name": "Puissance Génétique",
+  "releaseDate": "2024-10-30",
+  "symbol": "https://assets.tcgdex.net/univ/tcgp/A1/symbol",
+  "cardCount": {
+    "firstEd": 0,
+    "holo": 0,
+    "normal": 0,
+    "official": 226,
+    "reverse": 0,
+    "total": 286
+  },
+  "boosters": [
+    {
+      "id": "boo_A1-mewtwo",
+      "name": "Mewtwo"
+    },
+    {
+      "id": "boo_A1-charizard",
+      "name": "Dracaufeu"
+    },
+    {
+      "id": "boo_A1-pikachu",
+      "name": "Pikachu"
+    }
+  ],
+  "fetchedAt": "2026-09-21T20:36:49.836Z",
+  "cards": [
+    {
+      "id": "A1-001",
+      "localId": "001",
+      "name": "Bulbizarre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/001",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-002",
+      "localId": "002",
+      "name": "Herbizarre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/002",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-003",
+      "localId": "003",
+      "name": "Florizarre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/003",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-004",
+      "localId": "004",
+      "name": "Florizarre-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/004",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-005",
+      "localId": "005",
+      "name": "Chenipan",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/005",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-006",
+      "localId": "006",
+      "name": "Chrysacier",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/006",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-007",
+      "localId": "007",
+      "name": "Papilusion",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/007",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-008",
+      "localId": "008",
+      "name": "Aspicot",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/008",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-009",
+      "localId": "009",
+      "name": "Coconfort",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/009",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-010",
+      "localId": "010",
+      "name": "Dardargnan",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/010",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-011",
+      "localId": "011",
+      "name": "Mystherbe",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/011",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-012",
+      "localId": "012",
+      "name": "Ortide",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/012",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-013",
+      "localId": "013",
+      "name": "Rafflesia",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/013",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-014",
+      "localId": "014",
+      "name": "Paras",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/014",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-015",
+      "localId": "015",
+      "name": "Parasect",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/015",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-016",
+      "localId": "016",
+      "name": "Mimitoss",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/016",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-017",
+      "localId": "017",
+      "name": "Aéromite",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/017",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-018",
+      "localId": "018",
+      "name": "Chétiflor",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/018",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-019",
+      "localId": "019",
+      "name": "Boustiflor",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/019",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-020",
+      "localId": "020",
+      "name": "Empiflor",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/020",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-021",
+      "localId": "021",
+      "name": "Noeunoeuf",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/021",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-022",
+      "localId": "022",
+      "name": "Noadkoko",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/022",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-023",
+      "localId": "023",
+      "name": "Noadkoko-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/023",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-024",
+      "localId": "024",
+      "name": "Saquedeneu",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/024",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-025",
+      "localId": "025",
+      "name": "Insécateur",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/025",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-026",
+      "localId": "026",
+      "name": "Scarabrute",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/026",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-027",
+      "localId": "027",
+      "name": "Doudouvet",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/027",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-028",
+      "localId": "028",
+      "name": "Farfaduvet",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/028",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-029",
+      "localId": "029",
+      "name": "Chlorobule",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/029",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-030",
+      "localId": "030",
+      "name": "Fragilady",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/030",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-031",
+      "localId": "031",
+      "name": "Cabriolaine",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/031",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-032",
+      "localId": "032",
+      "name": "Chevroum",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/032",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-033",
+      "localId": "033",
+      "name": "Salamèche",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/033",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-034",
+      "localId": "034",
+      "name": "Reptincel",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/034",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-035",
+      "localId": "035",
+      "name": "Dracaufeu",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/035",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-036",
+      "localId": "036",
+      "name": "Dracaufeu-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/036",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-037",
+      "localId": "037",
+      "name": "Goupix",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/037",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-038",
+      "localId": "038",
+      "name": "Feunard",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/038",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-039",
+      "localId": "039",
+      "name": "Caninos",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/039",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-040",
+      "localId": "040",
+      "name": "Arcanin",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/040",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-041",
+      "localId": "041",
+      "name": "Arcanin-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/041",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-042",
+      "localId": "042",
+      "name": "Ponyta",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/042",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-043",
+      "localId": "043",
+      "name": "Galopa",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/043",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-044",
+      "localId": "044",
+      "name": "Magmar",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/044",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-045",
+      "localId": "045",
+      "name": "Pyroli",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/045",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-046",
+      "localId": "046",
+      "name": "Sulfura",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/046",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-047",
+      "localId": "047",
+      "name": "Sulfura-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/047",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-048",
+      "localId": "048",
+      "name": "Aflamanoir",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/048",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-049",
+      "localId": "049",
+      "name": "Tritox",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/049",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-050",
+      "localId": "050",
+      "name": "Malamandre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/050",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-051",
+      "localId": "051",
+      "name": "Grillepattes",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/051",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-052",
+      "localId": "052",
+      "name": "Scolocendre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/052",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-053",
+      "localId": "053",
+      "name": "Carapuce",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/053",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-054",
+      "localId": "054",
+      "name": "Carabaffe",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/054",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-055",
+      "localId": "055",
+      "name": "Tortank",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/055",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-056",
+      "localId": "056",
+      "name": "Tortank-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/056",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-057",
+      "localId": "057",
+      "name": "Psykokwak",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/057",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-058",
+      "localId": "058",
+      "name": "Akwakwak",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/058",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-059",
+      "localId": "059",
+      "name": "Ptitard",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/059",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-060",
+      "localId": "060",
+      "name": "Têtarte",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/060",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-061",
+      "localId": "061",
+      "name": "Tartard",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/061",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-062",
+      "localId": "062",
+      "name": "Tentacool",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/062",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-063",
+      "localId": "063",
+      "name": "Tentacruel",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/063",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-064",
+      "localId": "064",
+      "name": "Otaria",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/064",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-065",
+      "localId": "065",
+      "name": "Lamantine",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/065",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-066",
+      "localId": "066",
+      "name": "Kokiyas",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/066",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-067",
+      "localId": "067",
+      "name": "Crustabri",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/067",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-068",
+      "localId": "068",
+      "name": "Krabby",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/068",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-069",
+      "localId": "069",
+      "name": "Krabboss",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/069",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-070",
+      "localId": "070",
+      "name": "Hypotrempe",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/070",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-071",
+      "localId": "071",
+      "name": "Hypocéan",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/071",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-072",
+      "localId": "072",
+      "name": "Poissirène",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/072",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-073",
+      "localId": "073",
+      "name": "Poissoroy",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/073",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-074",
+      "localId": "074",
+      "name": "Stari",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/074",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-075",
+      "localId": "075",
+      "name": "Staross",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/075",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-076",
+      "localId": "076",
+      "name": "Staross-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/076",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-077",
+      "localId": "077",
+      "name": "Magicarpe",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/077",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-078",
+      "localId": "078",
+      "name": "Léviator",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/078",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-079",
+      "localId": "079",
+      "name": "Lokhlass",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/079",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-080",
+      "localId": "080",
+      "name": "Aquali",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/080",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-081",
+      "localId": "081",
+      "name": "Amonita",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/081",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-082",
+      "localId": "082",
+      "name": "Amonistar",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/082",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-083",
+      "localId": "083",
+      "name": "Artikodin",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/083",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-084",
+      "localId": "084",
+      "name": "Artikodin-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/084",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-085",
+      "localId": "085",
+      "name": "Couaneton",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/085",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-086",
+      "localId": "086",
+      "name": "Lakmécygne",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/086",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-087",
+      "localId": "087",
+      "name": "Grenousse",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/087",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-088",
+      "localId": "088",
+      "name": "Croâporal",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/088",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-089",
+      "localId": "089",
+      "name": "Amphinobi",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/089",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-090",
+      "localId": "090",
+      "name": "Concombaffe",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/090",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-091",
+      "localId": "091",
+      "name": "Denticrisse",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/091",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-092",
+      "localId": "092",
+      "name": "Frissonille",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/092",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-093",
+      "localId": "093",
+      "name": "Beldeneige",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/093",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-094",
+      "localId": "094",
+      "name": "Pikachu",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/094",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-095",
+      "localId": "095",
+      "name": "Raichu",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/095",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-096",
+      "localId": "096",
+      "name": "Pikachu-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/096",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-097",
+      "localId": "097",
+      "name": "Magnéti",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/097",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-098",
+      "localId": "098",
+      "name": "Magnéton",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/098",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-099",
+      "localId": "099",
+      "name": "Voltorbe",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/099",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-100",
+      "localId": "100",
+      "name": "Électrode",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/100",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-101",
+      "localId": "101",
+      "name": "Élektek",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/101",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-102",
+      "localId": "102",
+      "name": "Voltali",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/102",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-103",
+      "localId": "103",
+      "name": "Électhor",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/103",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-104",
+      "localId": "104",
+      "name": "Électhor-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/104",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-105",
+      "localId": "105",
+      "name": "Zébibron",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/105",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-106",
+      "localId": "106",
+      "name": "Zéblitz",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/106",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-107",
+      "localId": "107",
+      "name": "Anchwatt",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/107",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-108",
+      "localId": "108",
+      "name": "Lampéroie",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/108",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-109",
+      "localId": "109",
+      "name": "Ohmassacre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/109",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-110",
+      "localId": "110",
+      "name": "Galvaran",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/110",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-111",
+      "localId": "111",
+      "name": "Iguolta",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/111",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-112",
+      "localId": "112",
+      "name": "Wattapik",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/112",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-113",
+      "localId": "113",
+      "name": "Mélofée",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/113",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-114",
+      "localId": "114",
+      "name": "Mélodelfe",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/114",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-115",
+      "localId": "115",
+      "name": "Abra",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/115",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-116",
+      "localId": "116",
+      "name": "Kadabra",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/116",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-117",
+      "localId": "117",
+      "name": "Alakazam",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/117",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-118",
+      "localId": "118",
+      "name": "Ramoloss",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/118",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-119",
+      "localId": "119",
+      "name": "Flagadoss",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/119",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-120",
+      "localId": "120",
+      "name": "Fantominus",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/120",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-121",
+      "localId": "121",
+      "name": "Spectrum",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/121",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-122",
+      "localId": "122",
+      "name": "Ectoplasma",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/122",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-123",
+      "localId": "123",
+      "name": "Ectoplasma-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/123",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-124",
+      "localId": "124",
+      "name": "Soporifik",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/124",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-125",
+      "localId": "125",
+      "name": "Hypnomade",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/125",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-126",
+      "localId": "126",
+      "name": "M. Mime",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/126",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-127",
+      "localId": "127",
+      "name": "Lippoutou",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/127",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-128",
+      "localId": "128",
+      "name": "Mewtwo",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/128",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-129",
+      "localId": "129",
+      "name": "Mewtwo-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/129",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-130",
+      "localId": "130",
+      "name": "Tarsal",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/130",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-131",
+      "localId": "131",
+      "name": "Kirlia",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/131",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-132",
+      "localId": "132",
+      "name": "Gardevoir",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/132",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-133",
+      "localId": "133",
+      "name": "Chovsourir",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/133",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-134",
+      "localId": "134",
+      "name": "Rhinolove",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/134",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-135",
+      "localId": "135",
+      "name": "Gringolem",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/135",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-136",
+      "localId": "136",
+      "name": "Golemastoc",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/136",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-137",
+      "localId": "137",
+      "name": "Sabelette",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/137",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-138",
+      "localId": "138",
+      "name": "Sablaireau",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/138",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-139",
+      "localId": "139",
+      "name": "Taupiqueur",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/139",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-140",
+      "localId": "140",
+      "name": "Triopikeur",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/140",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-141",
+      "localId": "141",
+      "name": "Férosinge",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/141",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-142",
+      "localId": "142",
+      "name": "Colossinge",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/142",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-143",
+      "localId": "143",
+      "name": "Machoc",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/143",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-144",
+      "localId": "144",
+      "name": "Machopeur",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/144",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-145",
+      "localId": "145",
+      "name": "Mackogneur",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/145",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-146",
+      "localId": "146",
+      "name": "Mackogneur-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/146",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-147",
+      "localId": "147",
+      "name": "Racaillou",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/147",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-148",
+      "localId": "148",
+      "name": "Gravalanch",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/148",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-149",
+      "localId": "149",
+      "name": "Grolem",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/149",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-150",
+      "localId": "150",
+      "name": "Onix",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/150",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-151",
+      "localId": "151",
+      "name": "Osselait",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/151",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-152",
+      "localId": "152",
+      "name": "Ossatueur",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/152",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-153",
+      "localId": "153",
+      "name": "Ossatueur-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/153",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-154",
+      "localId": "154",
+      "name": "Kicklee",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/154",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-155",
+      "localId": "155",
+      "name": "Tygnon",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/155",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-156",
+      "localId": "156",
+      "name": "Rhinocorne",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/156",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-157",
+      "localId": "157",
+      "name": "Rhinoféros",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/157",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-158",
+      "localId": "158",
+      "name": "Kabuto",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/158",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-159",
+      "localId": "159",
+      "name": "Kabutops",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/159",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-160",
+      "localId": "160",
+      "name": "Kungfouine",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/160",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-161",
+      "localId": "161",
+      "name": "Shaofouine",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/161",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-162",
+      "localId": "162",
+      "name": "Poulpaf",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/162",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-163",
+      "localId": "163",
+      "name": "Krakos",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/163",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-164",
+      "localId": "164",
+      "name": "Abo",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/164",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-165",
+      "localId": "165",
+      "name": "Arbok",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/165",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-166",
+      "localId": "166",
+      "name": "Nidoran♀",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/166",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-167",
+      "localId": "167",
+      "name": "Nidorina",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/167",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-168",
+      "localId": "168",
+      "name": "Nidoqueen",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/168",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-169",
+      "localId": "169",
+      "name": "Nidoran♂",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/169",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-170",
+      "localId": "170",
+      "name": "Nidorino",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/170",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-171",
+      "localId": "171",
+      "name": "Nidoking",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/171",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-172",
+      "localId": "172",
+      "name": "Nosferapti",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/172",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-173",
+      "localId": "173",
+      "name": "Nosferalto",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/173",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-174",
+      "localId": "174",
+      "name": "Tadmorv",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/174",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-175",
+      "localId": "175",
+      "name": "Grotadmorv",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/175",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-176",
+      "localId": "176",
+      "name": "Smogo",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/176",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-177",
+      "localId": "177",
+      "name": "Smogogo",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/177",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-178",
+      "localId": "178",
+      "name": "Mysdibule",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/178",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-179",
+      "localId": "179",
+      "name": "Scalpion",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/179",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-180",
+      "localId": "180",
+      "name": "Scalproie",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/180",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-181",
+      "localId": "181",
+      "name": "Meltan",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/181",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-182",
+      "localId": "182",
+      "name": "Melmetal",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/182",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-183",
+      "localId": "183",
+      "name": "Minidraco",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/183",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-184",
+      "localId": "184",
+      "name": "Draco",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/184",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-185",
+      "localId": "185",
+      "name": "Dracolosse",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/185",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-186",
+      "localId": "186",
+      "name": "Roucool",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/186",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-187",
+      "localId": "187",
+      "name": "Roucoups",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/187",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-188",
+      "localId": "188",
+      "name": "Roucarnage",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/188",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-189",
+      "localId": "189",
+      "name": "Rattata",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/189",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-190",
+      "localId": "190",
+      "name": "Rattatac",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/190",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-191",
+      "localId": "191",
+      "name": "Piafabec",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/191",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-192",
+      "localId": "192",
+      "name": "Rapasdepic",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/192",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-193",
+      "localId": "193",
+      "name": "Rondoudou",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/193",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-194",
+      "localId": "194",
+      "name": "Grodoudou",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/194",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-195",
+      "localId": "195",
+      "name": "Grodoudou-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/195",
+      "rarity": "Quatre Diamants"
+    },
+    {
+      "id": "A1-196",
+      "localId": "196",
+      "name": "Miaouss",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/196",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-197",
+      "localId": "197",
+      "name": "Persian",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/197",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-198",
+      "localId": "198",
+      "name": "Canarticho",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/198",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-199",
+      "localId": "199",
+      "name": "Doduo",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/199",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-200",
+      "localId": "200",
+      "name": "Dodrio",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/200",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-201",
+      "localId": "201",
+      "name": "Excelangue",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/201",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-202",
+      "localId": "202",
+      "name": "Leveinard",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/202",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-203",
+      "localId": "203",
+      "name": "Kangourex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/203",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-204",
+      "localId": "204",
+      "name": "Tauros",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/204",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-205",
+      "localId": "205",
+      "name": "Métamorph",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/205",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-206",
+      "localId": "206",
+      "name": "Évoli",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/206",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-207",
+      "localId": "207",
+      "name": "Évoli",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/207",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-208",
+      "localId": "208",
+      "name": "Évoli",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/208",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-209",
+      "localId": "209",
+      "name": "Porygon",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/209",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-210",
+      "localId": "210",
+      "name": "Ptéra",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/210",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-211",
+      "localId": "211",
+      "name": "Ronflex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/211",
+      "rarity": "Trois Diamants"
+    },
+    {
+      "id": "A1-212",
+      "localId": "212",
+      "name": "Chinchidou",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/212",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-213",
+      "localId": "213",
+      "name": "Pashmilla",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/213",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-214",
+      "localId": "214",
+      "name": "Moumouton",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/214",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-215",
+      "localId": "215",
+      "name": "Moumouflon",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/215",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-216",
+      "localId": "216",
+      "name": "Fossile Nautile",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/216",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-217",
+      "localId": "217",
+      "name": "Fossile Dôme",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/217",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-218",
+      "localId": "218",
+      "name": "Vieil Ambre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/218",
+      "rarity": "Un Diamant"
+    },
+    {
+      "id": "A1-219",
+      "localId": "219",
+      "name": "Erika",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/219",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-220",
+      "localId": "220",
+      "name": "Ondine",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/220",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-221",
+      "localId": "221",
+      "name": "Auguste",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/221",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-222",
+      "localId": "222",
+      "name": "Koga",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/222",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-223",
+      "localId": "223",
+      "name": "Giovanni",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/223",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-224",
+      "localId": "224",
+      "name": "Pierre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/224",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-225",
+      "localId": "225",
+      "name": "Morgane",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/225",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-226",
+      "localId": "226",
+      "name": "Major Bob",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/226",
+      "rarity": "Deux Diamants"
+    },
+    {
+      "id": "A1-227",
+      "localId": "227",
+      "name": "Bulbizarre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/227",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-228",
+      "localId": "228",
+      "name": "Ortide",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/228",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-229",
+      "localId": "229",
+      "name": "Scarabrute",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/229",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-230",
+      "localId": "230",
+      "name": "Salamèche",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/230",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-231",
+      "localId": "231",
+      "name": "Galopa",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/231",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-232",
+      "localId": "232",
+      "name": "Carapuce",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/232",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-233",
+      "localId": "233",
+      "name": "Léviator",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/233",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-234",
+      "localId": "234",
+      "name": "Lokhlass",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/234",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-235",
+      "localId": "235",
+      "name": "Électrode",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/235",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-236",
+      "localId": "236",
+      "name": "Alakazam",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/236",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-237",
+      "localId": "237",
+      "name": "Ramoloss",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/237",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-238",
+      "localId": "238",
+      "name": "Taupiqueur",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/238",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-239",
+      "localId": "239",
+      "name": "Osselait",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/239",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-240",
+      "localId": "240",
+      "name": "Nidoqueen",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/240",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-241",
+      "localId": "241",
+      "name": "Nidoking",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/241",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-242",
+      "localId": "242",
+      "name": "Nosferalto",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/242",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-243",
+      "localId": "243",
+      "name": "Smogogo",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/243",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-244",
+      "localId": "244",
+      "name": "Dracolosse",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/244",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-245",
+      "localId": "245",
+      "name": "Roucarnage",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/245",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-246",
+      "localId": "246",
+      "name": "Miaouss",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/246",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-247",
+      "localId": "247",
+      "name": "Métamorph",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/247",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-248",
+      "localId": "248",
+      "name": "Évoli",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/248",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-249",
+      "localId": "249",
+      "name": "Porygon",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/249",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-250",
+      "localId": "250",
+      "name": "Ronflex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/250",
+      "rarity": "Une Étoile"
+    },
+    {
+      "id": "A1-251",
+      "localId": "251",
+      "name": "Florizarre-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/251",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-252",
+      "localId": "252",
+      "name": "Noadkoko-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/252",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-253",
+      "localId": "253",
+      "name": "Dracaufeu-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/253",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-254",
+      "localId": "254",
+      "name": "Arcanin-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/254",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-255",
+      "localId": "255",
+      "name": "Sulfura-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/255",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-256",
+      "localId": "256",
+      "name": "Tortank-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/256",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-257",
+      "localId": "257",
+      "name": "Staross-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/257",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-258",
+      "localId": "258",
+      "name": "Artikodin-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/258",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-259",
+      "localId": "259",
+      "name": "Pikachu-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/259",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-260",
+      "localId": "260",
+      "name": "Électhor-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/260",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-261",
+      "localId": "261",
+      "name": "Ectoplasma-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/261",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-262",
+      "localId": "262",
+      "name": "Mewtwo-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/262",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-263",
+      "localId": "263",
+      "name": "Mackogneur-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/263",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-264",
+      "localId": "264",
+      "name": "Ossatueur-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/264",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-265",
+      "localId": "265",
+      "name": "Grodoudou-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/265",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-266",
+      "localId": "266",
+      "name": "Erika",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/266",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-267",
+      "localId": "267",
+      "name": "Ondine",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/267",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-268",
+      "localId": "268",
+      "name": "Auguste",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/268",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-269",
+      "localId": "269",
+      "name": "Koga",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/269",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-270",
+      "localId": "270",
+      "name": "Giovanni",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/270",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-271",
+      "localId": "271",
+      "name": "Pierre",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/271",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-272",
+      "localId": "272",
+      "name": "Morgane",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/272",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-273",
+      "localId": "273",
+      "name": "Major Bob",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/273",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-274",
+      "localId": "274",
+      "name": "Sulfura-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/274",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-275",
+      "localId": "275",
+      "name": "Artikodin-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/275",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-276",
+      "localId": "276",
+      "name": "Électhor-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/276",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-277",
+      "localId": "277",
+      "name": "Ectoplasma-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/277",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-278",
+      "localId": "278",
+      "name": "Mackogneur-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/278",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-279",
+      "localId": "279",
+      "name": "Grodoudou-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/279",
+      "rarity": "Deux Étoiles"
+    },
+    {
+      "id": "A1-280",
+      "localId": "280",
+      "name": "Dracaufeu-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/280",
+      "rarity": "Trois Étoiles"
+    },
+    {
+      "id": "A1-281",
+      "localId": "281",
+      "name": "Pikachu-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/281",
+      "rarity": "Trois Étoiles"
+    },
+    {
+      "id": "A1-282",
+      "localId": "282",
+      "name": "Mewtwo-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/282",
+      "rarity": "Trois Étoiles"
+    },
+    {
+      "id": "A1-283",
+      "localId": "283",
+      "name": "Mew",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/283",
+      "rarity": "Trois Étoiles"
+    },
+    {
+      "id": "A1-284",
+      "localId": "284",
+      "name": "Dracaufeu-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/284",
+      "rarity": "Couronne"
+    },
+    {
+      "id": "A1-285",
+      "localId": "285",
+      "name": "Pikachu-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/285",
+      "rarity": "Couronne"
+    },
+    {
+      "id": "A1-286",
+      "localId": "286",
+      "name": "Mewtwo-ex",
+      "image": "https://assets.tcgdex.net/fr/tcgp/A1/286",
+      "rarity": "Couronne"
+    }
+  ]
+}
