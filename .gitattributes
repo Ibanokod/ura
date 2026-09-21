@@ -1,0 +1,5 @@
+# Fins de ligne uniformes (LF) dans le dépôt et la copie de travail : évite les avertissements
+# CRLF de git sous Windows et les diffs parasites.
+* text=auto eol=lf
+*.webp binary
+*.png binary

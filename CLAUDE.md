@@ -51,14 +51,29 @@ npm run cards      # regénère src/data/sets/A1.json depuis TCGdex (node script
 ## État d'avancement
 
 - [x] Étape 0 : cadrage (CLAUDE.md, PRODUCT.md, DESIGN.md, launch.json), 21/09/2026
-- [ ] Étape 1 : socle Vite + React + TS, dépôt git, premier commit
-- [ ] Étape 2 : données cartes A1 (script TCGdex), tables de tirage, raretés
-- [ ] Étape 3 : logique pure + tests (jour, seuils, tirages)
-- [ ] Étape 4 : état persistant (reducer, localStorage, export / import)
-- [ ] Étape 5 : coquille + design system (DESIGN.md à acter sur capture)
-- [ ] Étape 6 : écran Aujourd'hui
-- [ ] Étape 7 : révélation (carte, booster, paquet rare, reprise)
-- [ ] Étape 8 : écran Pokédex
-- [ ] Étape 9 : écran Historique + réglages
-- [ ] Étape 10 : PWA (prépare le téléphone)
+- [x] Étape 1 : socle Vite 8 + React 19 + TS 7, dépôt git local, premier commit, 21/09/2026
+- [x] Étape 2 : données cartes A1 (script TCGdex, 286 cartes), tables de tirage, raretés
+- [x] Étape 3 : logique pure + 48 tests Vitest (jour, seuils, tirages sans doublon, repli)
+- [x] Étape 4 : état persistant (reducer, localStorage `ura.v1`, export / import)
+- [x] Étape 5 : coquille + design system (tokens, boutons, barre d'onglets)
+- [x] Étape 6 : écran Aujourd'hui (jauge, + 0,15 L, autre volume, prises, gagné aujourd'hui)
+- [x] Étape 7 : révélation (carte, booster avec paquet, paquet rare, reprise après fermeture)
+- [x] Étape 8 : écran Pokédex (progression, filtres, grille, détail)
+- [x] Étape 9 : écran Historique (7 jours, jours dépliables) + réglages (export, import, reset)
+- [ ] **Validation visuelle par Iban** sur la démo locale, puis DESIGN.md passe en « acté »
+- [ ] Étape 10 : PWA (prépare le téléphone) : `vite-plugin-pwa`, manifeste, icônes, cache images
 - [ ] Étape 11 : clôture (cartographie, état, commit)
+
+Vérifié le 21/09/2026 dans le navigateur intégré (parcours piloté par script) : carte à
+0,5 L et 1 L, booster à 1,5 L (5 cartes distinctes, bilan), carte ☆ à 2 L, suppression puis
+remise d'une prise sans double récompense, rechargement sans perte, reprise d'une
+révélation interrompue, Pokédex 8 / 286, historique, réglages.
+
+## Pièges connus
+
+- TCGdex : deux cartes A1 « Sans Rareté » corrigées dans `scripts/fetch-cards.mjs`
+  (`OVERRIDES`) ; le filtre `set.id` est un « contient » ; l'URL `symbol` renvoyée par l'API
+  (`/univ/`) n'existe pas sur le CDN, on construit `/fr/tcgp/<set>/symbol.webp`.
+- Navigateur intégré de Claude : les clics par coordonnées ou par `ref` peuvent tomber à côté
+  quand la fenêtre est réduite (échelle du viewport émulé) ; pour vérifier un parcours, piloter
+  la page par `javascript_tool` (`button.click()`) et lire `localStorage`.
