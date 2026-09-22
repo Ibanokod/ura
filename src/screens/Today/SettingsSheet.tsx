@@ -1,9 +1,13 @@
 import { Download, Upload } from 'lucide-react'
 import { useRef, useState, type ChangeEvent } from 'react'
+import { Card } from '../../components/Card/Card'
+import { RarityBadge } from '../../components/RarityBadge/RarityBadge'
 import { Sheet } from '../../components/Sheet/Sheet'
 import { getSet } from '../../data/sets'
+import { cx } from '../../lib/cx'
 import { formatLitersShort, todayKey } from '../../lib/day'
 import { exportJson, parseImport } from '../../state/persistence'
+import { selectBackdropCard } from '../../state/selectors'
 import { useActions, useAppState } from '../../state/store'
 import styles from './SettingsSheet.module.css'
 
@@ -14,6 +18,8 @@ export function SettingsSheet({ open, onClose }: Props) {
   const state = useAppState()
   const actions = useActions()
   const set = getSet(state.settings.setId)
+  const backdrop = selectBackdropCard(state, set)
+  const fixedBackdrop = state.settings.backdropCardId !== null
   const fileRef = useRef<HTMLInputElement>(null)
   const [confirmReset, setConfirmReset] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
@@ -76,6 +82,47 @@ export function SettingsSheet({ open, onClose }: Props) {
           <dd className="tabular">{__APP_VERSION__}</dd>
         </div>
       </dl>
+
+      <section className={styles.block}>
+        <h3 className={styles.blockTitle}>Fond d'écran de l'accueil</h3>
+        <div className={styles.segmented} role="group" aria-label="Carte affichée en fond">
+          <button
+            type="button"
+            className={cx(styles.segment, !fixedBackdrop && styles.segmentActive)}
+            aria-pressed={!fixedBackdrop}
+            onClick={() => actions.setBackdrop(null)}
+          >
+            Dernière carte gagnée
+          </button>
+          <button
+            type="button"
+            className={cx(styles.segment, fixedBackdrop && styles.segmentActive)}
+            aria-pressed={fixedBackdrop}
+            disabled={!backdrop}
+            onClick={() => backdrop && actions.setBackdrop(backdrop.id)}
+          >
+            Carte fixe
+          </button>
+        </div>
+        {backdrop ? (
+          <div className={styles.backdropRow}>
+            <div className={styles.backdropThumb}>
+              <Card card={backdrop} faceUp quality="low" />
+            </div>
+            <div className={styles.backdropText}>
+              <strong>{backdrop.name}</strong>
+              <RarityBadge rarity={backdrop.rarity} withLabel />
+              <span className={styles.hint}>
+                {fixedBackdrop
+                  ? 'Cette carte reste en fond. Pour en changer : ouvre une carte, puis « Mettre en fond d’écran ».'
+                  : 'Le fond suit ta dernière carte gagnée.'}
+              </span>
+            </div>
+          </div>
+        ) : (
+          <p className={styles.hint}>Le fond apparaîtra avec ta première carte.</p>
+        )}
+      </section>
 
       <div className={styles.actions}>
         <button type="button" className="btn btn-secondary btn-block" onClick={onExport}>
