@@ -1,7 +1,7 @@
 {
   "name": "ura",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Traqueur d'eau personnel avec récompenses façon Pokémon TCG Pocket",
   "type": "module",
   "scripts": {

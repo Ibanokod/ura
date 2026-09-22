@@ -108,13 +108,16 @@ Couleurs des types d'énergie (fiche de carte uniquement : pastilles de coût, t
   (coût en pastilles, nom, dégâts en 20 px, effet en `--text-muted`), faiblesse et retraite,
   description en italique, illustrateur et paquet en 12 px. Les énergies `{G}`, `{R}`... des
   textes d'effet sont rendues en pastilles.
-- **Fond d'écran de l'accueil** : la dernière carte obtenue (ou la carte épinglée), image
-  `high.webp` cadrée sur l'illustration (`object-position: center 18%`), flou léger de
-  2,5 px, saturation 1,25, opacité 0,6, fondue vers `--bg` par un dégradé vertical, sur les
-  52 % du haut de l'écran au plus ; fixe pendant que le contenu défile. Sous le titre, une
-  ligne « Dernière carte gagnée » (vignette 48 px, nom, rareté) dit ce qui est affiché et
-  ouvre la fiche. La jauge (fond `--surface` à 82 %, flou d'arrière-plan 10 px) laisse
-  affleurer l'illustration.
+- **Fond d'écran de l'accueil** : la dernière carte obtenue (ou la carte épinglée) couvre
+  le bloc « héros » entier (titre, dernière carte, jauge, boutons, indication), du haut de
+  l'écran au titre « Prises du jour », et défile avec lui. Image `high.webp` à 140 % de la
+  hauteur du bloc, centrée horizontalement, calée en haut : l'illustration de la carte (le
+  tiers sous le nom) tombe à hauteur de la jauge et de la quantité (retour d'Iban du
+  22/09 : l'image « collée en haut » n'était pas propre). Flou 2,5 px, saturation 1,25,
+  opacité 0,62, voile uniforme à 18 % puis fondu vers `--bg` sur les 20 % du bas. Sous le
+  titre, une ligne « Dernière carte gagnée » (vignette 48 px, nom, rareté) dit ce qui est
+  affiché et ouvre la fiche. La jauge (fond `--surface` à 82 %, flou d'arrière-plan 10 px)
+  laisse affleurer l'illustration.
 - **Grilles de cartes** (gagné aujourd'hui, historique) : 4 par rangée, gouttière 8 px,
   chaque carte est un bouton. Un jour replié de l'historique montre une rangée puis une case
   « +n » ; la liste des prises du jour montre les 3 dernières puis « Voir les n autres ».
