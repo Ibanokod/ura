@@ -1,11 +1,14 @@
+/* Légèrement translucide : l'illustration du fond d'écran affleure derrière la jauge. */
 .wrap {
   display: flex;
   align-items: center;
   gap: var(--sp-6);
   padding: var(--sp-5);
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: rgba(20, 28, 46, 0.82);
+  border: 1px solid var(--border-strong);
   border-radius: var(--r-lg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .cylinder {

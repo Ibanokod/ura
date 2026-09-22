@@ -16,10 +16,20 @@ Les valeurs vivent dans `src/styles/tokens.css` ; ce fichier explique le pourquo
 1. **L'eau est l'action, les cartes sont la récompense.** Un seul geste principal par écran
    (le bouton « + 0,15 L »), en couleur eau. Les couleurs de rareté n'apparaissent que sur les
    cartes et à la révélation.
-2. **Calme par défaut, spectaculaire à la révélation.** L'interface courante est sobre et
-   mate ; les halos, brillances et mouvements sont réservés au retournement des cartes.
+2. **Sobre dans la structure, vivant par les cartes.** Les illustrations de la collection
+   sont la couleur de l'appli : fond d'écran reconnaissable sur l'accueil, grilles de cartes
+   bien visibles (4 par rangée), emplacements manquants teintés par leur rareté. Les panneaux
+   posés sur une illustration sont légèrement translucides. Les halos, brillances et
+   mouvements restent réservés au retournement des cartes (retour d'Iban du 22/09/2026 :
+   la première version était trop sobre).
 3. **Lisible d'une main, au réveil.** Gros chiffres, cibles tactiles de 44 px minimum,
    contrastes élevés, aucune information cachée dans un menu.
+4. **Toute carte visible s'ouvre d'un tap** (accueil, gagné aujourd'hui, historique,
+   Pokédex) sur la même fiche complète.
+5. **On lit de haut en bas, jamais de côté.** Coquille à la hauteur de l'écran : seul le
+   contenu défile, la barre du bas reste toujours visible. Aucun défilement horizontal : sur
+   mobile, une rangée qui déborde élargit la fenêtre de mise en page et décale tout ; les
+   rangées passent à la ligne (filtres) ou deviennent des grilles de 4 (cartes).
 
 ## Palette
 
@@ -99,9 +109,17 @@ Couleurs des types d'énergie (fiche de carte uniquement : pastilles de coût, t
   description en italique, illustrateur et paquet en 12 px. Les énergies `{G}`, `{R}`... des
   textes d'effet sont rendues en pastilles.
 - **Fond d'écran de l'accueil** : la dernière carte obtenue (ou la carte épinglée), image
-  `low.webp` agrandie de 12 %, floutée à 14 px, opacité 0,42, fondue vers `--bg` par un
-  dégradé vertical, sur les 58 % du haut de l'écran au plus. C'est le seul visuel décoratif
-  de l'appli, et il vient de la collection du joueur.
+  `high.webp` cadrée sur l'illustration (`object-position: center 18%`), flou léger de
+  2,5 px, saturation 1,25, opacité 0,6, fondue vers `--bg` par un dégradé vertical, sur les
+  52 % du haut de l'écran au plus ; fixe pendant que le contenu défile. Sous le titre, une
+  ligne « Dernière carte gagnée » (vignette 48 px, nom, rareté) dit ce qui est affiché et
+  ouvre la fiche. La jauge (fond `--surface` à 82 %, flou d'arrière-plan 10 px) laisse
+  affleurer l'illustration.
+- **Grilles de cartes** (gagné aujourd'hui, historique) : 4 par rangée, gouttière 8 px,
+  chaque carte est un bouton. Un jour replié de l'historique montre une rangée puis une case
+  « +n » ; la liste des prises du jour montre les 3 dernières puis « Voir les n autres ».
+- **Emplacement manquant du Pokédex** : fond `--surface` mélangé à 9 % de la couleur de la
+  rareté, bordure à 28 %, numéro dans la couleur de la rareté.
 - **Liste** (prises, jours) : lignes de 56 px, séparateur `--border`, heure en
   `--text-muted`, volume en chiffres tabulaires.
 
@@ -116,7 +134,8 @@ Couleurs des types d'énergie (fiche de carte uniquement : pastilles de coût, t
 
 Gradients « sparkle » ou multicolores décoratifs, bento, blobs, emoji, icônes ou polices
 chargées depuis un service externe, assets du jeu (dos de carte officiel, logo, visuels de
-booster), ombres colorées hors révélation, animations permanentes.
+booster), ombres colorées hors révélation, animations permanentes, **défilement
+horizontal** (rangées à faire défiler du doigt).
 
 ## Accessibilité
 

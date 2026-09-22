@@ -76,9 +76,13 @@ ici. Lancer `npm audit` avant chaque déploiement.
 - [x] Hébergement GitHub Pages : dépôt public `Ibanokod/ura` créé et poussé le 21/09/2026
   (soir) avec l'accord d'Iban ; Pages en mode « GitHub Actions » ;
   adresse : https://ibanokod.github.io/ura/
-- [ ] Installation sur le téléphone d'Iban (Chrome Android : « Ajouter à l'écran d'accueil »)
-  et vérification du service worker en conditions réelles (le navigateur intégré de Claude
-  ne les enregistre pas)
+- [x] Installée sur le téléphone d'Iban le 22/09/2026 (captures reçues : l'appli fonctionne
+  en réel, cartes gagnées sur la journée)
+- [x] Retours d'Iban du 22/09 : coquille figée (barre du bas toujours visible, plus aucun
+  défilement horizontal, cause du décalage du Pokédex), toute carte visible ouvre sa fiche,
+  accueil plus vivant (illustration reconnaissable, ligne « Dernière carte gagnée »,
+  panneaux translucides), prises du jour repliées à 3, cartes gagnées en grille de 4,
+  emplacements manquants teintés par rareté
 - [ ] Validation visuelle finale par Iban, puis DESIGN.md passe en « acté »
 - [ ] Étape 11 : clôture (cartographie, état, commit)
 
@@ -101,4 +105,8 @@ révélation interrompue, Pokédex 8 / 286, historique, réglages.
   (`/univ/`) n'existe pas sur le CDN, on construit `/fr/tcgp/<set>/symbol.webp`.
 - Navigateur intégré de Claude : les clics par coordonnées ou par `ref` peuvent tomber à côté
   quand la fenêtre est réduite (échelle du viewport émulé) ; pour vérifier un parcours, piloter
-  la page par `javascript_tool` (`button.click()`) et lire `localStorage`.
+  la page par `javascript_tool` (`button.click()`) et lire `localStorage`. Il n'enregistre
+  pas les service workers : la PWA se vérifie sur le téléphone.
+- Mobile : une rangée à défilement horizontal (chips, vignettes) élargit la fenêtre de mise
+  en page (`innerWidth` passe de 375 à 711 constaté le 22/09) et décale la barre du bas.
+  Interdit : grilles de 4 ou retour à la ligne, et `<main>` seul défile (`overflow-x: hidden`).

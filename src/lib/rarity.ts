@@ -58,3 +58,17 @@ export function rarityFamily(rarity: Rarity): RarityFamily {
 export function isRare(rarity: Rarity): boolean {
   return rarityRank(rarity) >= rarityRank(RARE_MIN)
 }
+
+/** Nom de la variable CSS de couleur de la famille (tokens.css). */
+export function rarityCssVar(rarity: Rarity): string {
+  switch (rarityFamily(rarity)) {
+    case 'crown':
+      return '--rarity-crown'
+    case 'shiny':
+      return '--rarity-shiny'
+    case 'star':
+      return '--rarity-star'
+    default:
+      return '--rarity-diamond'
+  }
+}
