@@ -93,6 +93,12 @@ Tout push sur `main` déclenche le workflow (tests, build, publication) ; suivre
 et relire le diff pour s'assurer qu'aucun nom d'infrastructure Miatu ni donnée personnelle
 ne part dans le dépôt public.
 
+Mise à jour côté appareil : le service worker (`registerType: 'autoUpdate'`, `registerSW`
+dans `main.tsx`) télécharge la nouvelle version en arrière-plan et recharge la page dès
+qu'elle est activée. Une appli ouverte au moment du déploiement se met à jour toute seule
+en quelques secondes ; vérifier une mise à jour = charger la page publiée, attendre, lire le
+nom du script `index-*.js`.
+
 Vérifié le 21/09/2026 dans le navigateur intégré (parcours piloté par script) : carte à
 0,5 L et 1 L, booster à 1,5 L (5 cartes distinctes, bilan), carte ☆ à 2 L, suppression puis
 remise d'une prise sans double récompense, rechargement sans perte, reprise d'une
