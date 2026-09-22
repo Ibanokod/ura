@@ -83,60 +83,6 @@
   background: var(--surface-2);
 }
 
-/* Dernière carte gagnée : on dit ce qui se cache derrière, et on l'ouvre d'un tap. */
-.lastCard {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  width: 100%;
-  padding: var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-2);
-  border-radius: var(--r-lg);
-  background: rgba(20, 28, 46, 0.62);
-  border: 1px solid var(--border-strong);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  text-align: left;
-  transition: background var(--dur-fast) var(--ease);
-}
-
-.lastCard:active {
-  background: rgba(28, 39, 64, 0.8);
-}
-
-.lastCardThumb {
-  flex: 0 0 48px;
-  width: 48px;
-}
-
-.lastCardText {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  font-size: var(--fs-sm);
-}
-
-.lastCardText strong {
-  font-size: var(--fs-md);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.lastCardLabel {
-  font-size: var(--fs-xs);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-}
-
-.lastCardChevron {
-  color: var(--text-muted);
-  flex: 0 0 auto;
-}
-
 .otherForm {
   display: grid;
   grid-template-columns: 1fr auto auto;

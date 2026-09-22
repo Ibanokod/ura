@@ -1,9 +1,8 @@
-import { ChevronDown, ChevronRight, Package, RectangleVertical, Settings, Sparkles, Trash2 } from 'lucide-react'
+import { ChevronDown, Package, RectangleVertical, Settings, Sparkles, Trash2 } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { Card } from '../../components/Card/Card'
 import { CardDetailSheet } from '../../components/CardDetail/CardDetailSheet'
 import { Gauge } from '../../components/Gauge/Gauge'
-import { RarityBadge } from '../../components/RarityBadge/RarityBadge'
 import { cardById, cardImageUrl, getSet, type CardData } from '../../data/sets'
 import { cx } from '../../lib/cx'
 import { formatLitersShort, formatTime } from '../../lib/day'
@@ -67,20 +66,6 @@ export function TodayScreen() {
           <Settings size={22} aria-hidden="true" />
         </button>
       </header>
-
-      {backdrop && (
-        <button type="button" className={styles.lastCard} onClick={() => setSelectedCard(backdrop)}>
-          <span className={styles.lastCardThumb}>
-            <Card card={backdrop} faceUp quality="low" />
-          </span>
-          <span className={styles.lastCardText}>
-            <span className={styles.lastCardLabel}>{state.settings.backdropCardId ? 'Carte épinglée' : 'Dernière carte gagnée'}</span>
-            <strong>{backdrop.name}</strong>
-            <RarityBadge rarity={backdrop.rarity} withLabel />
-          </span>
-          <ChevronRight size={20} aria-hidden="true" className={styles.lastCardChevron} />
-        </button>
-      )}
 
       <Gauge totalMl={today.totalMl} goalMl={state.settings.goalMl} />
 
