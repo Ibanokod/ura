@@ -51,8 +51,10 @@ Barre du bas à trois onglets : **Aujourd'hui**, **Pokédex**, **Historique**. M
 - Grille des 286 emplacements, 4 par rangée, dans l'ordre de l'extension : possédée =
   vignette, manquante = emplacement teinté par sa rareté + numéro.
 - Filtres : toutes / possédées / manquantes, et par rareté.
-- Tap sur une carte : fiche complète (image, numéro, rareté, date d'obtention, détails du jeu,
-  bouton fond d'écran). La même fiche s'ouvre depuis toute carte visible dans l'appli.
+- Tap sur une carte : fiche complète dans une fenêtre centrée (image, numéro, rareté, date
+  d'obtention, détails du jeu, bouton fond d'écran), avec flèches et glissement latéral pour
+  passer aux cartes voisines de la liste, bouton « Fermer » en bas. La même fenêtre s'ouvre
+  depuis toute carte visible dans l'appli (gagné aujourd'hui, historique).
 
 ### Historique
 

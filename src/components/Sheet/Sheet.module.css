@@ -1,48 +1,65 @@
+/* Fenêtre centrée sur tous les écrans : ni vide en haut, ni bord collé au menu du téléphone. */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: 90;
-  background: rgba(5, 9, 20, 0.65);
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-end;
+  padding: var(--sp-4);
+  padding-bottom: calc(var(--sp-4) + var(--safe-bottom));
+  background: rgba(5, 9, 20, 0.74);
   animation: fade var(--dur) var(--ease);
 }
 
 .panel {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  max-width: var(--app-max-width);
-  max-height: 88dvh;
-  overflow-y: auto;
+  max-width: 440px;
+  max-height: 100%;
   background: var(--surface-2);
-  border-radius: var(--r-lg) var(--r-lg) 0 0;
-  padding: var(--sp-2) var(--sp-4) calc(var(--sp-6) + var(--safe-bottom));
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-lg);
   box-shadow: var(--shadow-2);
-  animation: rise var(--dur) var(--ease);
-}
-
-.handle {
-  width: 40px;
-  height: 4px;
-  margin: var(--sp-1) auto var(--sp-3);
-  border-radius: 2px;
-  background: var(--border-strong);
+  overflow: hidden;
+  animation: pop var(--dur) var(--ease);
 }
 
 .header {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-3);
-  margin-bottom: var(--sp-4);
+  padding: var(--sp-3) var(--sp-3) var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.titles {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .title {
   font-size: var(--fs-lg);
   font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.subtitle {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
 }
 
 .close {
+  flex: 0 0 auto;
   display: grid;
   place-items: center;
   width: var(--touch);
@@ -56,28 +73,24 @@
   color: var(--text);
 }
 
+/* Seule zone qui défile dans la fenêtre. */
 .body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--sp-4);
   display: flex;
   flex-direction: column;
   gap: var(--sp-4);
+  scrollbar-width: thin;
 }
 
-/* Sur grand écran, la feuille devient une boîte de dialogue centrée. */
-@media (min-width: 600px) {
-  .backdrop {
-    align-items: center;
-    padding: var(--sp-6);
-  }
-
-  .panel {
-    max-height: 90dvh;
-    border-radius: var(--r-lg);
-    padding-bottom: var(--sp-6);
-  }
-
-  .handle {
-    display: none;
-  }
+.footer {
+  flex: 0 0 auto;
+  padding: var(--sp-3) var(--sp-4);
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
 }
 
 @keyframes fade {
@@ -86,9 +99,9 @@
   }
 }
 
-@keyframes rise {
+@keyframes pop {
   from {
-    transform: translateY(24px);
     opacity: 0;
+    transform: translateY(12px) scale(0.98);
   }
 }

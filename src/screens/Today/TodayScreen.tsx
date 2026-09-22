@@ -1,7 +1,7 @@
 import { ChevronDown, Package, RectangleVertical, Settings, Sparkles, Trash2 } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { Card } from '../../components/Card/Card'
-import { CardDetailSheet } from '../../components/CardDetail/CardDetailSheet'
+import { CardViewer } from '../../components/CardViewer/CardViewer'
 import { Gauge } from '../../components/Gauge/Gauge'
 import { cardById, cardImageUrl, getSet, type CardData } from '../../data/sets'
 import { cx } from '../../lib/cx'
@@ -28,7 +28,7 @@ export function TodayScreen() {
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [confirmId, setConfirmId] = useState<string | null>(null)
   const [showAllEntries, setShowAllEntries] = useState(false)
-  const [selectedCard, setSelectedCard] = useState<CardData | null>(null)
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null)
 
   const submitOther = (e: FormEvent) => {
     e.preventDefault()
@@ -162,7 +162,7 @@ export function TodayScreen() {
           <ul className={styles.won}>
             {wonToday.map((card, i) => (
               <li key={`${card.id}-${i}`}>
-                <Card card={card} faceUp quality="low" onClick={() => setSelectedCard(card)} />
+                <Card card={card} faceUp quality="low" onClick={() => setViewerIndex(i)} />
               </li>
             ))}
           </ul>
@@ -170,7 +170,7 @@ export function TodayScreen() {
       )}
 
       <SettingsSheet open={settingsOpen} onClose={() => setSettingsOpen(false)} />
-      <CardDetailSheet card={selectedCard} onClose={() => setSelectedCard(null)} />
+      <CardViewer cards={wonToday} index={viewerIndex} onChange={setViewerIndex} onClose={() => setViewerIndex(null)} />
     </div>
   )
 }

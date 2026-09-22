@@ -1,7 +1,7 @@
 import { Check, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import { Card } from '../../components/Card/Card'
-import { CardDetailSheet } from '../../components/CardDetail/CardDetailSheet'
+import { CardViewer } from '../../components/CardViewer/CardViewer'
 import { cardById, getSet, type CardData } from '../../data/sets'
 import { cx } from '../../lib/cx'
 import { dayLabel, formatLiters, formatLitersShort, formatTime, lastDays, totalForDay } from '../../lib/day'
@@ -20,7 +20,8 @@ export function HistoryScreen() {
   const set = getSet(state.settings.setId)
   const goal = state.settings.goalMl
   const [openDay, setOpenDay] = useState<string | null>(null)
-  const [selectedCard, setSelectedCard] = useState<CardData | null>(null)
+  /** Fenêtre de carte : la liste du jour cliqué et la position dedans. */
+  const [viewer, setViewer] = useState<{ cards: CardData[]; index: number } | null>(null)
 
   const week = lastDays(7).map((day) => ({ day, totalMl: totalForDay(state.entries, day) }))
   const days = selectDays(state)
@@ -81,7 +82,7 @@ export function HistoryScreen() {
                   <ul className={styles.thumbs} aria-label="Cartes gagnées">
                     {shown.map((card, i) => (
                       <li key={`${card.id}-${i}`}>
-                        <Card card={card} faceUp quality="low" onClick={() => setSelectedCard(card)} />
+                        <Card card={card} faceUp quality="low" onClick={() => setViewer({ cards, index: i })} />
                       </li>
                     ))}
                     {folded > 0 && (
@@ -124,7 +125,12 @@ export function HistoryScreen() {
         </ul>
       )}
 
-      <CardDetailSheet card={selectedCard} onClose={() => setSelectedCard(null)} />
+      <CardViewer
+        cards={viewer?.cards ?? []}
+        index={viewer?.index ?? null}
+        onChange={(index) => setViewer((v) => (v ? { ...v, index } : v))}
+        onClose={() => setViewer(null)}
+      />
     </div>
   )
 }
