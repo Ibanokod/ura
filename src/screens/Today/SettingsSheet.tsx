@@ -71,6 +71,10 @@ export function SettingsSheet({ open, onClose }: Props) {
           <dt>Prises enregistrées</dt>
           <dd>{state.entries.length}</dd>
         </div>
+        <div>
+          <dt>Version</dt>
+          <dd className="tabular">{__APP_VERSION__}</dd>
+        </div>
       </dl>
 
       <div className={styles.actions}>
