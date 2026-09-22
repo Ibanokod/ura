@@ -1,12 +1,14 @@
-.detail {
+/* Zone de glissement latéral : le défilement vertical reste au navigateur (pan-y). */
+.area {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--sp-4);
+  touch-action: pan-y;
 }
 
 .card {
-  width: min(64vw, 260px);
+  width: min(58vw, 230px);
 }
 
 .missing {
@@ -32,7 +34,7 @@
   margin: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: var(--sp-3);
 }
 
@@ -55,4 +57,30 @@
   margin: 0;
   font-weight: 700;
   font-size: var(--fs-sm);
+}
+
+/* Pied : flèche, Fermer, flèche. Tout à portée du pouce. */
+.nav {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  height: 48px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  transition: background var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease);
+}
+
+.arrow:active {
+  background: var(--surface);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
 }

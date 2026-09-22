@@ -1,7 +1,7 @@
 import { useState, type CSSProperties } from 'react'
-import { CardDetailSheet } from '../../components/CardDetail/CardDetailSheet'
+import { CardViewer } from '../../components/CardViewer/CardViewer'
 import { RarityBadge } from '../../components/RarityBadge/RarityBadge'
-import { cardImageUrl, getSet, type CardData } from '../../data/sets'
+import { cardImageUrl, getSet } from '../../data/sets'
 import { cx } from '../../lib/cx'
 import { rarityCssVar, type Rarity } from '../../lib/rarity'
 import { selectDexStats } from '../../state/selectors'
@@ -18,7 +18,7 @@ export function DexScreen() {
   const stats = selectDexStats(state, set)
   const [status, setStatus] = useState<Status>('all')
   const [rarity, setRarity] = useState<Rarity | null>(null)
-  const [selected, setSelected] = useState<CardData | null>(null)
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null)
 
   const cards = set.cards.filter((card) => {
     const owned = card.id in state.collection
@@ -76,7 +76,7 @@ export function DexScreen() {
         <p className={styles.empty}>Aucune carte ne correspond à ce filtre.</p>
       ) : (
         <ul className={styles.grid}>
-          {cards.map((card) => {
+          {cards.map((card, i) => {
             const owned = card.id in state.collection
             return (
               <li key={card.id}>
@@ -84,7 +84,7 @@ export function DexScreen() {
                   type="button"
                   className={cx(styles.slot, !owned && styles.slotMissing)}
                   style={{ '--slot-color': `var(${rarityCssVar(card.rarity)})` } as CSSProperties}
-                  onClick={() => setSelected(card)}
+                  onClick={() => setViewerIndex(i)}
                   aria-label={owned ? `${card.name}, ${card.rarity}` : `Carte ${card.localId}, ${card.rarity}, pas encore obtenue`}
                 >
                   {owned ? (
@@ -102,7 +102,7 @@ export function DexScreen() {
         </ul>
       )}
 
-      <CardDetailSheet card={selected} onClose={() => setSelected(null)} />
+      <CardViewer cards={cards} index={viewerIndex} onChange={setViewerIndex} onClose={() => setViewerIndex(null)} />
     </div>
   )
 }

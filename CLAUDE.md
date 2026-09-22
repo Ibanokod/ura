@@ -83,6 +83,9 @@ ici. Lancer `npm audit` avant chaque déploiement.
   accueil plus vivant (illustration reconnaissable, ligne « Dernière carte gagnée »,
   panneaux translucides), prises du jour repliées à 3, cartes gagnées en grille de 4,
   emplacements manquants teintés par rareté
+- [x] Retours d'Iban du 22/09 (suite) : accueil sans ligne « Dernière carte », illustration
+  centrée sur la jauge ; fiche de carte en fenêtre centrée avec « Fermer » en bas, flèches
+  et glissement latéral entre cartes (`CardViewer`), réglages dans la même fenêtre
 - [ ] Validation visuelle finale par Iban, puis DESIGN.md passe en « acté »
 - [ ] Étape 11 : clôture (cartographie, état, commit)
 

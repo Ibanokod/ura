@@ -100,9 +100,15 @@ Couleurs des types d'énergie (fiche de carte uniquement : pastilles de coût, t
   `--water`, motif discret) ; halo de révélation dans la couleur de la rareté.
 - **Barre du bas** : 3 onglets, icônes lucide 24 px + libellé, actif en `--water`, fond
   `--surface`, bord haut `--border`, marge de sécurité iOS respectée.
-- **Feuille** (réglages, détail de carte) : glisse depuis le bas, fond `--surface-2`, coins
-  16 px en haut, poignée. À partir de 600 px de large, elle devient une boîte de dialogue
-  centrée (coins 16 px partout, sans poignée).
+- **Fenêtre** (réglages, fiche de carte) : centrée sur tous les écrans, fond `--surface-2`,
+  coins 16 px, marge 16 px tout autour (jamais collée au bord du téléphone, jamais de vide
+  en haut). En-tête (titre, compteur, croix) et pied fixes, seul le contenu défile. Trois
+  sorties : bouton « Fermer » plein largeur dans le pied (zone du pouce), croix, tap à côté
+  (retour d'Iban du 22/09 : le volet du bas était pénible sur mobile).
+- **Fiche de carte** (`CardViewer`) : la fenêtre ci-dessus avec, dans le pied, flèche
+  gauche, « Fermer », flèche droite ; compteur « 3 / 8 » sous le titre ; glissement latéral
+  sur le contenu et touches ←/→ pour passer à la carte voisine de la liste d'origine
+  (cartes du jour, cartes d'une journée, Pokédex filtré) sans quitter la fenêtre.
 - **Fiche de carte** (`CardInfo`) : panneau `--surface` sous la carte, comme dans le jeu :
   stade et pré-évolution, PV en 28 px, pastilles de type, talents (étiquette or), attaques
   (coût en pastilles, nom, dégâts en 20 px, effet en `--text-muted`), faiblesse et retraite,
