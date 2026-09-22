@@ -34,9 +34,8 @@ Barre du bas à trois onglets : **Aujourd'hui**, **Pokédex**, **Historique**. M
 
 ### Aujourd'hui
 
-- Fond d'écran : la dernière carte gagnée (ou la carte épinglée depuis le Pokédex), bien
-  reconnaissable ; sous le titre, la ligne « Dernière carte gagnée » (vignette, nom, rareté)
-  ouvre sa fiche.
+- Fond d'écran : la dernière carte gagnée (ou la carte épinglée depuis sa fiche), bien
+  reconnaissable derrière le titre, la jauge et les boutons ; sans légende.
 - Jauge d'eau de 0 à 1,5 L, total du jour en litres (« 0,75 L »).
 - Gros bouton « + 0,15 L ». Lien « Autre volume » : champ en mL + valider.
 - Indicateur de la prochaine récompense (« Prochaine carte dans 0,25 L », « Booster à 1,5 L »,

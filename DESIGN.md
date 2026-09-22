@@ -114,9 +114,10 @@ Couleurs des types d'énergie (fiche de carte uniquement : pastilles de coût, t
   hauteur du bloc, centrée horizontalement, calée en haut : l'illustration de la carte (le
   tiers sous le nom) tombe à hauteur de la jauge et de la quantité (retour d'Iban du
   22/09 : l'image « collée en haut » n'était pas propre). Flou 2,5 px, saturation 1,25,
-  opacité 0,62, voile uniforme à 18 % puis fondu vers `--bg` sur les 20 % du bas. Sous le
-  titre, une ligne « Dernière carte gagnée » (vignette 48 px, nom, rareté) dit ce qui est
-  affiché et ouvre la fiche. La jauge (fond `--surface` à 82 %, flou d'arrière-plan 10 px)
+  opacité 0,62, voile uniforme à 18 % puis fondu vers `--bg` sur les 20 % du bas. Aucune
+  légende : le fond parle de lui-même (la ligne « Dernière carte gagnée » a été retirée le
+  22/09 à la demande d'Iban, contenu inutile) ; la carte reste choisissable depuis sa fiche
+  (« Mettre en fond d'écran »). La jauge (fond `--surface` à 82 %, flou d'arrière-plan 10 px)
   laisse affleurer l'illustration.
 - **Grilles de cartes** (gagné aujourd'hui, historique) : 4 par rangée, gouttière 8 px,
   chaque carte est un bouton. Un jour replié de l'historique montre une rangée puis une case
