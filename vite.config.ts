@@ -1,9 +1,13 @@
+import { readFileSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import { defineConfig, type Plugin } from 'vitest/config'
 
 // Chemin de base : « / » en local, « /ura/ » sur GitHub Pages (variable posée par le workflow).
 const base = process.env.BASE_PATH ?? '/'
+
+// Version affichée dans les réglages : permet de vérifier qu'une mise à jour est arrivée.
+const { version } = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')) as { version: string }
 
 // Politique de sécurité du contenu (production seulement : le serveur de dev injecte des
 // scripts en ligne). Scripts et styles de l'appli uniquement, images depuis le CDN TCGdex,
@@ -32,6 +36,9 @@ const cspMeta: Plugin = {
 
 export default defineConfig({
   base,
+  define: {
+    __APP_VERSION__: JSON.stringify(version),
+  },
   build: {
     // Aucune ressource inlinée en data: (polices, images) : la CSP reste stricte.
     assetsInlineLimit: 0,
