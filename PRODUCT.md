@@ -43,7 +43,9 @@ Barre du bas à trois onglets : **Aujourd'hui**, **Pokédex**, **Historique**. M
 - Prises du jour : les 3 dernières (heure, volume, suppression avec confirmation), puis
   « Voir les n autres prises » pour déplier le reste.
 - Gagné aujourd'hui : les cartes du jour en grille de 4 par rangée, chacune ouvre sa fiche.
-- Engrenage en haut à droite : exporter, importer, réinitialiser. Rien d'autre.
+- Engrenage en haut à droite : fond d'écran (« Dernière carte gagnée », par défaut, ou
+  « Carte fixe » : la carte choisie depuis sa fiche), exporter, importer, réinitialiser.
+  Rien d'autre.
 
 ### Pokédex
 
