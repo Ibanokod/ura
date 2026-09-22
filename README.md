@@ -7,7 +7,8 @@ Pokédex, jamais de doublon. « Ura » veut dire « eau » en basque.
 
 Projet personnel, sans compte ni serveur : **toutes les données restent dans le navigateur de
 l'appareil** (export et import JSON depuis les réglages). L'appli est une PWA installable sur
-l'écran d'accueil d'un téléphone.
+l'écran d'accueil d'un téléphone ; elle se met à jour toute seule à chaque nouvelle version
+publiée.
 
 ## Lancer en local
 
