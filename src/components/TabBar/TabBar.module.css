@@ -1,11 +1,8 @@
+/* Dans le flux de la coquille (pas en position fixe) : toujours visible, jamais décalée. */
 .bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  flex: 0 0 auto;
+  position: relative;
   z-index: 10;
-  margin: 0 auto;
-  max-width: var(--app-max-width);
   height: calc(var(--tabbar-height) + var(--safe-bottom));
   padding-bottom: var(--safe-bottom);
   display: grid;

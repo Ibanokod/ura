@@ -1,14 +1,19 @@
-import { Package, RectangleVertical, Settings, Sparkles, Trash2 } from 'lucide-react'
+import { ChevronDown, ChevronRight, Package, RectangleVertical, Settings, Sparkles, Trash2 } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { Card } from '../../components/Card/Card'
+import { CardDetailSheet } from '../../components/CardDetail/CardDetailSheet'
 import { Gauge } from '../../components/Gauge/Gauge'
-import { cardById, cardImageUrl, getSet } from '../../data/sets'
+import { RarityBadge } from '../../components/RarityBadge/RarityBadge'
+import { cardById, cardImageUrl, getSet, type CardData } from '../../data/sets'
 import { cx } from '../../lib/cx'
 import { formatLitersShort, formatTime } from '../../lib/day'
 import { selectBackdropCard, selectDexStats, selectToday } from '../../state/selectors'
 import { useActions, useAppState } from '../../state/store'
 import { SettingsSheet } from './SettingsSheet'
 import styles from './TodayScreen.module.css'
+
+/** Prises affichées avant de déplier la liste complète. */
+const VISIBLE_ENTRIES = 3
 
 export function TodayScreen() {
   const state = useAppState()
@@ -23,6 +28,8 @@ export function TodayScreen() {
   const [other, setOther] = useState('')
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [confirmId, setConfirmId] = useState<string | null>(null)
+  const [showAllEntries, setShowAllEntries] = useState(false)
+  const [selectedCard, setSelectedCard] = useState<CardData | null>(null)
 
   const submitOther = (e: FormEvent) => {
     e.preventDefault()
@@ -33,15 +40,21 @@ export function TodayScreen() {
     setShowOther(false)
   }
 
-  const wonToday = today.rewards.flatMap((r) => r.cardIds).map((id) => cardById(set, id))
+  const wonToday = today.rewards
+    .flatMap((r) => r.cardIds)
+    .map((id) => cardById(set, id))
+    .filter((c): c is CardData => c !== undefined)
+  const hiddenEntries = Math.max(0, today.entries.length - VISIBLE_ENTRIES)
+  const entries = showAllEntries ? today.entries : today.entries.slice(0, VISIBLE_ENTRIES)
 
   return (
     <div className={styles.screen}>
       {backdrop && (
         <div className={styles.backdrop} aria-hidden="true">
-          <img key={backdrop.id} src={cardImageUrl(backdrop, 'low')} alt="" draggable={false} />
+          <img key={backdrop.id} src={cardImageUrl(backdrop, 'high')} alt="" draggable={false} />
         </div>
       )}
+
       <header className={styles.header}>
         <div>
           <p className={styles.date}>{todayLabel()}</p>
@@ -51,6 +64,20 @@ export function TodayScreen() {
           <Settings size={22} aria-hidden="true" />
         </button>
       </header>
+
+      {backdrop && (
+        <button type="button" className={styles.lastCard} onClick={() => setSelectedCard(backdrop)}>
+          <span className={styles.lastCardThumb}>
+            <Card card={backdrop} faceUp quality="low" />
+          </span>
+          <span className={styles.lastCardText}>
+            <span className={styles.lastCardLabel}>{state.settings.backdropCardId ? 'Carte épinglée' : 'Dernière carte gagnée'}</span>
+            <strong>{backdrop.name}</strong>
+            <RarityBadge rarity={backdrop.rarity} withLabel />
+          </span>
+          <ChevronRight size={20} aria-hidden="true" className={styles.lastCardChevron} />
+        </button>
+      )}
 
       <Gauge totalMl={today.totalMl} goalMl={state.settings.goalMl} />
 
@@ -99,7 +126,7 @@ export function TodayScreen() {
           <p className={styles.empty}>Rien pour l'instant. Un premier verre ?</p>
         ) : (
           <ul className={styles.list}>
-            {today.entries.map((entry) => (
+            {entries.map((entry) => (
               <li key={entry.id} className={styles.row}>
                 <span className={cx(styles.time, 'tabular')}>{formatTime(entry.at)}</span>
                 <span className={cx(styles.vol, 'tabular')}>{formatLitersShort(entry.ml)}</span>
@@ -126,20 +153,35 @@ export function TodayScreen() {
                 )}
               </li>
             ))}
+            {hiddenEntries > 0 && (
+              <li>
+                <button type="button" className={styles.more} aria-expanded={showAllEntries} onClick={() => setShowAllEntries((v) => !v)}>
+                  <span>{showAllEntries ? 'Réduire' : `Voir les ${hiddenEntries} autres prises`}</span>
+                  <ChevronDown size={18} aria-hidden="true" className={cx(styles.chevron, showAllEntries && styles.chevronOpen)} />
+                </button>
+              </li>
+            )}
           </ul>
         )}
       </section>
 
       {wonToday.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.h2}>Gagné aujourd'hui</h2>
+          <h2 className={styles.h2}>
+            Gagné aujourd'hui <span className={cx(styles.count, 'tabular')}>{wonToday.length}</span>
+          </h2>
           <ul className={styles.won}>
-            {wonToday.map((card, i) => (card ? <li key={`${card.id}-${i}`}>{<Card card={card} faceUp quality="low" />}</li> : null))}
+            {wonToday.map((card, i) => (
+              <li key={`${card.id}-${i}`}>
+                <Card card={card} faceUp quality="low" onClick={() => setSelectedCard(card)} />
+              </li>
+            ))}
           </ul>
         </section>
       )}
 
       <SettingsSheet open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+      <CardDetailSheet card={selectedCard} onClose={() => setSelectedCard(null)} />
     </div>
   )
 }

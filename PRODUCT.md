@@ -34,26 +34,38 @@ Barre du bas à trois onglets : **Aujourd'hui**, **Pokédex**, **Historique**. M
 
 ### Aujourd'hui
 
+- Fond d'écran : la dernière carte gagnée (ou la carte épinglée depuis le Pokédex), bien
+  reconnaissable ; sous le titre, la ligne « Dernière carte gagnée » (vignette, nom, rareté)
+  ouvre sa fiche.
 - Jauge d'eau de 0 à 1,5 L, total du jour en litres (« 0,75 L »).
 - Gros bouton « + 0,15 L ». Lien « Autre volume » : champ en mL + valider.
 - Indicateur de la prochaine récompense (« Prochaine carte dans 0,25 L », « Booster à 1,5 L »,
   « Prochaine carte rare dans 0,40 L »).
-- Liste des prises du jour (heure, volume), suppression avec confirmation.
+- Prises du jour : les 3 dernières (heure, volume, suppression avec confirmation), puis
+  « Voir les n autres prises » pour déplier le reste.
+- Gagné aujourd'hui : les cartes du jour en grille de 4 par rangée, chacune ouvre sa fiche.
 - Engrenage en haut à droite : exporter, importer, réinitialiser. Rien d'autre.
 
 ### Pokédex
 
-- Progression globale « 37 / 286 » et par rareté.
-- Grille des 286 emplacements dans l'ordre de l'extension : possédée = vignette, manquante =
-  silhouette sombre + numéro.
+- Progression globale « 37 / 286 » et par rareté (filtres qui passent à la ligne).
+- Grille des 286 emplacements, 4 par rangée, dans l'ordre de l'extension : possédée =
+  vignette, manquante = emplacement teinté par sa rareté + numéro.
 - Filtres : toutes / possédées / manquantes, et par rareté.
-- Tap sur une carte possédée : grande image, nom, rareté, date d'obtention.
+- Tap sur une carte : fiche complète (image, numéro, rareté, date d'obtention, détails du jeu,
+  bouton fond d'écran). La même fiche s'ouvre depuis toute carte visible dans l'appli.
 
 ### Historique
 
 - Barres des 7 derniers jours avec la ligne d'objectif.
-- Liste des jours : date, total, badge objectif atteint, mini-vignettes des cartes gagnées.
-- Tap sur un jour : ses prises et ses récompenses.
+- Liste des jours : date, total, badge objectif atteint, cartes gagnées en grille de 4 (une
+  rangée puis « +n » tant que le jour est replié), chaque carte ouvre sa fiche.
+- Tap sur un jour : toutes ses cartes, ses prises et ses récompenses.
+
+### Coquille
+
+Colonne à la hauteur de l'écran : seul le contenu défile, la barre du bas reste toujours
+visible. Aucun défilement horizontal nulle part.
 
 ### Révélation (plein écran, par-dessus les onglets)
 

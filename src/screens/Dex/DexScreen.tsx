@@ -1,14 +1,11 @@
-import { ImageIcon } from 'lucide-react'
-import { useState } from 'react'
-import { Card } from '../../components/Card/Card'
-import { CardInfo } from '../../components/CardInfo/CardInfo'
+import { useState, type CSSProperties } from 'react'
+import { CardDetailSheet } from '../../components/CardDetail/CardDetailSheet'
 import { RarityBadge } from '../../components/RarityBadge/RarityBadge'
-import { Sheet } from '../../components/Sheet/Sheet'
 import { cardImageUrl, getSet, type CardData } from '../../data/sets'
 import { cx } from '../../lib/cx'
-import type { Rarity } from '../../lib/rarity'
+import { rarityCssVar, type Rarity } from '../../lib/rarity'
 import { selectDexStats } from '../../state/selectors'
-import { useActions, useAppState } from '../../state/store'
+import { useAppState } from '../../state/store'
 import styles from './DexScreen.module.css'
 
 type Status = 'all' | 'owned' | 'missing'
@@ -48,6 +45,7 @@ export function DexScreen() {
         </div>
       </header>
 
+      {/* Les filtres passent à la ligne : jamais de défilement horizontal (il élargit la page sur mobile). */}
       <ul className={styles.rarities} aria-label="Filtrer par rareté">
         {stats.byRarity.map((r) => (
           <li key={r.rarity}>
@@ -85,6 +83,7 @@ export function DexScreen() {
                 <button
                   type="button"
                   className={cx(styles.slot, !owned && styles.slotMissing)}
+                  style={{ '--slot-color': `var(${rarityCssVar(card.rarity)})` } as CSSProperties}
                   onClick={() => setSelected(card)}
                   aria-label={owned ? `${card.name}, ${card.rarity}` : `Carte ${card.localId}, ${card.rarity}, pas encore obtenue`}
                 >
@@ -103,65 +102,7 @@ export function DexScreen() {
         </ul>
       )}
 
-      <Sheet open={selected !== null} onClose={() => setSelected(null)} title={selected ? (selected.id in state.collection ? selected.name : `Carte ${selected.localId}`) : ''}>
-        {selected && (
-          <CardDetail
-            card={selected}
-            obtainedAt={state.collection[selected.id]?.at}
-            isBackdrop={state.settings.backdropCardId === selected.id}
-          />
-        )}
-      </Sheet>
-    </div>
-  )
-}
-
-function CardDetail({ card, obtainedAt, isBackdrop }: { card: CardData; obtainedAt: string | undefined; isBackdrop: boolean }) {
-  const actions = useActions()
-  return (
-    <div className={styles.detail}>
-      <div className={styles.detailCard}>
-        {obtainedAt ? (
-          <Card card={card} faceUp glow eager />
-        ) : (
-          <div className={styles.detailMissing}>
-            <span className={cx(styles.detailNumber, 'tabular')}>{card.localId}</span>
-            <span>Pas encore obtenue</span>
-          </div>
-        )}
-      </div>
-      <dl className={styles.detailFacts}>
-        <div>
-          <dt>Numéro</dt>
-          <dd className="tabular">{card.localId}</dd>
-        </div>
-        <div>
-          <dt>Rareté</dt>
-          <dd>
-            <RarityBadge rarity={card.rarity} withLabel />
-          </dd>
-        </div>
-        {obtainedAt && (
-          <div>
-            <dt>Obtenue le</dt>
-            <dd>{new Date(obtainedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</dd>
-          </div>
-        )}
-      </dl>
-      {obtainedAt && (
-        <>
-          <CardInfo card={card} />
-          <button
-            type="button"
-            className="btn btn-secondary btn-block"
-            aria-pressed={isBackdrop}
-            onClick={() => actions.setBackdrop(isBackdrop ? null : card.id)}
-          >
-            <ImageIcon size={18} aria-hidden="true" />
-            {isBackdrop ? "Retirer du fond d'écran" : "Mettre en fond d'écran"}
-          </button>
-        </>
-      )}
+      <CardDetailSheet card={selected} onClose={() => setSelected(null)} />
     </div>
   )
 }

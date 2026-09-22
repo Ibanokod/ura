@@ -1,7 +1,8 @@
 import { Check, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import { Card } from '../../components/Card/Card'
-import { cardById, getSet } from '../../data/sets'
+import { CardDetailSheet } from '../../components/CardDetail/CardDetailSheet'
+import { cardById, getSet, type CardData } from '../../data/sets'
 import { cx } from '../../lib/cx'
 import { dayLabel, formatLiters, formatLitersShort, formatTime, lastDays, totalForDay } from '../../lib/day'
 import { rewardLabel } from '../../lib/rewards'
@@ -11,12 +12,15 @@ import styles from './HistoryScreen.module.css'
 
 /** Hauteur du graphique = 1,5 fois l'objectif : l'objectif tombe aux deux tiers, le dépassement reste visible. */
 const CHART_SCALE = 1.5
+/** Cartes montrées pour un jour replié (une rangée). */
+const FOLDED_CARDS = 4
 
 export function HistoryScreen() {
   const state = useAppState()
   const set = getSet(state.settings.setId)
   const goal = state.settings.goalMl
   const [openDay, setOpenDay] = useState<string | null>(null)
+  const [selectedCard, setSelectedCard] = useState<CardData | null>(null)
 
   const week = lastDays(7).map((day) => ({ day, totalMl: totalForDay(state.entries, day) }))
   const days = selectDays(state)
@@ -55,7 +59,12 @@ export function HistoryScreen() {
           {days.map((day) => {
             const summary = selectDay(state, day)
             const open = openDay === day
-            const cards = summary.rewards.flatMap((r) => r.cardIds).map((id) => cardById(set, id))
+            const cards = summary.rewards
+              .flatMap((r) => r.cardIds)
+              .map((id) => cardById(set, id))
+              .filter((c): c is CardData => c !== undefined)
+            const shown = open ? cards : cards.slice(0, FOLDED_CARDS)
+            const folded = cards.length - shown.length
             return (
               <li key={day} className={styles.day}>
                 <button type="button" className={styles.dayHead} aria-expanded={open} onClick={() => setOpenDay(open ? null : day)}>
@@ -70,8 +79,18 @@ export function HistoryScreen() {
                 </button>
                 {cards.length > 0 && (
                   <ul className={styles.thumbs} aria-label="Cartes gagnées">
-                    {cards.slice(0, 8).map((card, i) => (card ? <li key={`${card.id}-${i}`}>{<Card card={card} faceUp quality="low" />}</li> : null))}
-                    {cards.length > 8 && <li className={styles.more}>+{cards.length - 8}</li>}
+                    {shown.map((card, i) => (
+                      <li key={`${card.id}-${i}`}>
+                        <Card card={card} faceUp quality="low" onClick={() => setSelectedCard(card)} />
+                      </li>
+                    ))}
+                    {folded > 0 && (
+                      <li>
+                        <button type="button" className={styles.more} onClick={() => setOpenDay(day)} aria-label={`Voir les ${folded} autres cartes`}>
+                          +{folded}
+                        </button>
+                      </li>
+                    )}
                   </ul>
                 )}
                 {open && (
@@ -104,6 +123,8 @@ export function HistoryScreen() {
           })}
         </ul>
       )}
+
+      <CardDetailSheet card={selectedCard} onClose={() => setSelectedCard(null)} />
     </div>
   )
 }

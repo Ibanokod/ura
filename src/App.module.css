@@ -1,12 +1,22 @@
 .app {
   position: relative;
-  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
   max-width: var(--app-max-width);
   margin: 0 auto;
+  overflow: hidden;
 }
 
+/* Seule zone qui défile, verticalement uniquement : rien ne peut élargir la page. */
 .main {
-  padding: var(--sp-4) var(--sp-4) calc(var(--tabbar-height) + var(--safe-bottom) + var(--sp-8));
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  padding: var(--sp-4) var(--sp-4) var(--sp-8);
+  scrollbar-width: thin;
 }
 
 @media (min-width: 600px) {

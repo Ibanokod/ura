@@ -2,16 +2,18 @@
   display: flex;
   flex-direction: column;
   gap: var(--sp-4);
+  min-width: 0;
 }
 
-/* Fond d'écran : la dernière carte obtenue (ou la carte choisie), floutée et fondue dans le
-   fond de l'appli. Positionné par rapport à la colonne de l'appli, derrière tout le reste. */
+/* Fond d'écran : la dernière carte gagnée (ou la carte épinglée), son illustration bien
+   reconnaissable, fondue dans le fond de l'appli vers le bas. Positionné par rapport à la
+   colonne de l'appli, derrière tout le reste ; le contenu défile par-dessus. */
 .backdrop {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: min(58vh, 520px);
+  height: min(52vh, 470px);
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -21,17 +23,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 22%;
-  transform: scale(1.12);
-  filter: blur(14px) saturate(1.15);
-  opacity: 0.42;
+  object-position: center 18%;
+  transform: scale(1.06);
+  filter: blur(2.5px) saturate(1.25);
+  opacity: 0.6;
 }
 
 .backdrop::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 18, 32, 0.1) 0%, rgba(11, 18, 32, 0.45) 50%, var(--bg) 100%);
+  background: linear-gradient(180deg, rgba(11, 18, 32, 0) 0%, rgba(11, 18, 32, 0.25) 40%, rgba(11, 18, 32, 0.75) 75%, var(--bg) 100%);
 }
 
 .screen > :not(.backdrop) {
@@ -44,6 +46,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--sp-3);
+  text-shadow: 0 1px 12px rgba(11, 18, 32, 0.9);
 }
 
 .date {
@@ -71,6 +74,60 @@
 .iconBtn:active {
   color: var(--text);
   background: var(--surface-2);
+}
+
+/* Dernière carte gagnée : on dit ce qui se cache derrière, et on l'ouvre d'un tap. */
+.lastCard {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-2);
+  border-radius: var(--r-lg);
+  background: rgba(20, 28, 46, 0.62);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-align: left;
+  transition: background var(--dur-fast) var(--ease);
+}
+
+.lastCard:active {
+  background: rgba(28, 39, 64, 0.8);
+}
+
+.lastCardThumb {
+  flex: 0 0 48px;
+  width: 48px;
+}
+
+.lastCardText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: var(--fs-sm);
+}
+
+.lastCardText strong {
+  font-size: var(--fs-md);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lastCardLabel {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.lastCardChevron {
+  color: var(--text-muted);
+  flex: 0 0 auto;
 }
 
 .otherForm {
@@ -130,11 +187,23 @@
 }
 
 .h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
   font-size: var(--fs-sm);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-muted);
+}
+
+.count {
+  padding: 0 8px;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: var(--fs-xs);
+  letter-spacing: 0;
 }
 
 .empty {
@@ -179,14 +248,30 @@
   gap: var(--sp-1);
 }
 
-.won {
+.more {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: var(--sp-2);
-  overflow-x: auto;
-  padding: var(--sp-1) 0 var(--sp-2);
-  scrollbar-width: thin;
+  width: 100%;
+  min-height: 48px;
+  border-top: 1px solid var(--border);
+  color: var(--water);
+  font-size: var(--fs-sm);
+  font-weight: 700;
 }
 
-.won li {
-  flex: 0 0 64px;
+.chevron {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Cartes gagnées : grille de 4, on lit de haut en bas, jamais de défilement latéral. */
+.won {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--sp-2);
 }
