@@ -49,11 +49,14 @@ export function TodayScreen() {
 
   return (
     <div className={styles.screen}>
-      {backdrop && (
-        <div className={styles.backdrop} aria-hidden="true">
-          <img key={backdrop.id} src={cardImageUrl(backdrop, 'high')} alt="" draggable={false} />
-        </div>
-      )}
+      {/* Bloc « héros » : l'illustration de la dernière carte couvre exactement ce bloc,
+          du haut de l'écran jusqu'au titre « Prises du jour », centrée sur la jauge. */}
+      <div className={styles.hero}>
+        {backdrop && (
+          <div className={styles.backdrop} aria-hidden="true">
+            <img key={backdrop.id} src={cardImageUrl(backdrop, 'high')} alt="" draggable={false} />
+          </div>
+        )}
 
       <header className={styles.header}>
         <div>
@@ -119,6 +122,7 @@ export function TodayScreen() {
         <NextIcon kind={complete ? 'complete' : today.next.kind} />
         <span>{nextLabel(complete, today.next.kind, today.next.remainingMl)}</span>
       </p>
+      </div>
 
       <section className={styles.section}>
         <h2 className={styles.h2}>Prises du jour</h2>
