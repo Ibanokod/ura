@@ -64,9 +64,47 @@
   padding: var(--sp-4) 0;
 }
 
-.cardHolder {
+/* La pile : trois cartes visibles au plus, décalées vers le bas ; la carte du dessus suit le
+   doigt puis sort sur le côté. Les glissements verticaux restent au défilement (pan-y). */
+.stack {
+  position: relative;
   width: min(70vw, 290px);
+  aspect-ratio: var(--card-ratio);
+  margin-bottom: 20px;
   flex: 0 0 auto;
+}
+
+.stackCard {
+  position: absolute;
+  inset: 0;
+  touch-action: pan-y;
+  transition: transform var(--dur) var(--ease);
+  will-change: transform;
+  outline: none;
+}
+
+.stackCard:focus-visible {
+  outline: 2px solid var(--water);
+  outline-offset: 4px;
+  border-radius: var(--r-card);
+}
+
+.stackDragging {
+  transition: none;
+}
+
+.stackLeaving {
+  opacity: 0;
+  transition: transform 280ms ease-in, opacity 280ms ease-in;
+  pointer-events: none;
+}
+
+.hint {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: var(--sp-2) 0;
 }
 
 .details {

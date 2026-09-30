@@ -88,6 +88,8 @@ ici. Lancer `npm audit` avant chaque déploiement.
 - [x] Retours d'Iban du 22/09 (suite) : accueil sans ligne « Dernière carte », illustration
   centrée sur la jauge ; fiche de carte en fenêtre centrée avec « Fermer » en bas, flèches
   et glissement latéral entre cartes (`CardViewer`), réglages dans la même fenêtre
+- [x] Retour d'Iban du 30/09 : ouverture de booster façon jeu (pile face cachée, un tap
+  retourne tout, glissements latéraux pour découvrir les cartes), plus de bouton « suivante »
 - [ ] Validation visuelle finale par Iban, puis DESIGN.md passe en « acté »
 - [ ] Étape 11 : clôture (cartographie, état, commit)
 
@@ -119,7 +121,10 @@ révélation interrompue, Pokédex 8 / 286, historique, réglages.
 - Navigateur intégré de Claude : les clics par coordonnées ou par `ref` peuvent tomber à côté
   quand la fenêtre est réduite (échelle du viewport émulé) ; pour vérifier un parcours, piloter
   la page par `javascript_tool` (`button.click()`) et lire `localStorage`. Il n'enregistre
-  pas les service workers : la PWA se vérifie sur le téléphone.
+  pas les service workers : la PWA se vérifie sur le téléphone. Ses captures sont fausses
+  pendant les animations (cartes vides, fondus figés) : pour voir le vrai rendu, Edge
+  headless piloté par CDP, modèle dans `scripts/capture-booster.mjs` (`npm run preview`
+  d'abord).
 - Mobile : une rangée à défilement horizontal (chips, vignettes) élargit la fenêtre de mise
   en page (`innerWidth` passe de 375 à 711 constaté le 22/09) et décale la barre du bas.
   Interdit : grilles de 4 ou retour à la ligne, et `<main>` seul défile (`overflow-x: hidden`).

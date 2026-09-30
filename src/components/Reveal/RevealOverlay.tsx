@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
 import { cardById, cardImageUrl, getSet, setSymbolUrl, type CardData, type SetData } from '../../data/sets'
 import { cx } from '../../lib/cx'
 import { formatLitersShort } from '../../lib/day'
@@ -18,6 +18,11 @@ export function RevealOverlay() {
   return <Reveal key={reward.id} reward={reward} />
 }
 
+/**
+ * Déroulé (comme dans le jeu) : le paquet s'ouvre, les cartes arrivent en pile face cachée,
+ * un tap retourne toute la pile, puis chaque glissement sur le côté envoie la carte du
+ * dessus et découvre la suivante. `reward.revealed` compte les cartes déjà glissées.
+ */
 function Reveal({ reward }: { reward: Reward }) {
   const state = useAppState()
   const actions = useActions()
@@ -28,12 +33,12 @@ function Reveal({ reward }: { reward: Reward }) {
   )
   const total = cards.length
   const isBooster = reward.kind === 'booster'
+  const remaining = total - reward.revealed
 
-  // Étape locale : paquet encore fermé ? carte en cours ? bilan ?
   const [opened, setOpened] = useState(!isBooster || reward.revealed > 0)
-  const [index, setIndex] = useState(Math.min(reward.revealed, total))
+  const [flipped, setFlipped] = useState(reward.revealed > 0)
 
-  // Précharger les images pour que le retournement montre la carte tout de suite.
+  // Précharger les images pour que le retournement montre les cartes tout de suite.
   useEffect(() => {
     for (const card of cards) {
       const img = new Image()
@@ -65,7 +70,7 @@ function Reveal({ reward }: { reward: Reward }) {
     )
   } else if (!opened) {
     content = <Pack set={set} onOpen={() => setOpened(true)} />
-  } else if (index >= total) {
+  } else if (reward.revealed >= total) {
     content = (
       <>
         <div className={styles.stage}>
@@ -91,38 +96,37 @@ function Reveal({ reward }: { reward: Reward }) {
       </>
     )
   } else {
-    const current = cards[index]
-    const faceUp = index < reward.revealed
-    const last = index === total - 1
-    const onTap = () => {
-      if (!faceUp) actions.revealCard(reward.id)
-      else if (total > 1) setIndex((i) => i + 1)
-    }
+    const current = cards[reward.revealed]
     content = (
       <>
         <div className={styles.stage}>
           <div className={styles.stageInner}>
-            <div className={styles.cardHolder}>
-              <Card card={current} faceUp={faceUp} glow eager onClick={onTap} />
-            </div>
+            <Stack
+              cards={cards}
+              revealed={reward.revealed}
+              flipped={flipped}
+              swipeable={total > 1}
+              onFlip={() => setFlipped(true)}
+              onSwipe={() => actions.revealCard(reward.id)}
+            />
             <div className={styles.caption} aria-live="polite">
-              {faceUp ? (
+              {flipped ? (
                 <>
                   <strong>{current.name}</strong>
                   <RarityBadge rarity={current.rarity} withLabel />
                 </>
               ) : (
-                <span>Touche la carte pour la retourner</span>
+                <span>{total > 1 ? 'Touche la pile pour retourner les cartes' : 'Touche la carte pour la retourner'}</span>
               )}
             </div>
             {total > 1 && (
-              <ol className={styles.dots} aria-label={`Carte ${index + 1} sur ${total}`}>
+              <ol className={styles.dots} aria-label={`Carte ${reward.revealed + 1} sur ${total}`}>
                 {cards.map((card, i) => (
-                  <li key={card.id} className={cx(styles.dot, i < reward.revealed && styles.dotDone, i === index && styles.dotCurrent)} />
+                  <li key={card.id} className={cx(styles.dot, i < reward.revealed && styles.dotDone, i === reward.revealed && styles.dotCurrent)} />
                 ))}
               </ol>
             )}
-            {faceUp && (
+            {flipped && (
               <div className={styles.details}>
                 <CardInfo card={current} compact />
               </div>
@@ -130,25 +134,18 @@ function Reveal({ reward }: { reward: Reward }) {
           </div>
         </div>
         <div className={styles.footer}>
-          {total === 1 && faceUp && (
+          {total === 1 && flipped && (
             <button type="button" className="btn btn-primary btn-block btn-lg" onClick={close}>
               Ajouter au Pokédex
             </button>
           )}
-          {total > 1 && faceUp && (
-            <button type="button" className="btn btn-primary btn-block btn-lg" onClick={() => setIndex((i) => i + 1)}>
-              {last ? 'Voir le bilan' : 'Carte suivante'}
-            </button>
+          {total > 1 && flipped && (
+            <p className={styles.hint}>
+              Glisse la carte sur le côté pour voir la suivante · {remaining} {remaining > 1 ? 'restantes' : 'restante'}
+            </p>
           )}
-          {total > 1 && reward.revealed < total && (
-            <button
-              type="button"
-              className="btn btn-ghost btn-block"
-              onClick={() => {
-                actions.revealAll(reward.id)
-                setIndex(total)
-              }}
-            >
+          {total > 1 && (
+            <button type="button" className="btn btn-ghost btn-block" onClick={() => actions.revealAll(reward.id)}>
               Tout révéler
             </button>
           )}
@@ -166,6 +163,117 @@ function Reveal({ reward }: { reward: Reward }) {
         </header>
         {content}
       </div>
+    </div>
+  )
+}
+
+/** Glissement minimal (px) pour envoyer la carte du dessus. */
+const SWIPE_MIN = 70
+/** Durée de la sortie de la carte (doit suivre la transition CSS `.stackLeaving`). */
+const LEAVE_MS = 280
+
+type StackProps = {
+  cards: CardData[]
+  /** Cartes déjà glissées : la carte du dessus est `cards[revealed]`. */
+  revealed: number
+  flipped: boolean
+  swipeable: boolean
+  onFlip: () => void
+  onSwipe: () => void
+}
+
+/**
+ * La pile : jusqu'à trois cartes visibles, légèrement décalées. Face cachée, un tap retourne
+ * tout ; face visible, on glisse la carte du dessus (doigt, souris, ou touches ← →).
+ */
+function Stack({ cards, revealed, flipped, swipeable, onFlip, onSwipe }: StackProps) {
+  const [drag, setDrag] = useState<{ dx: number; dy: number } | null>(null)
+  const [leaving, setLeaving] = useState<-1 | 0 | 1>(0)
+  const start = useRef<{ x: number; y: number; moved: boolean } | null>(null)
+  const visible = cards.slice(revealed, revealed + 3)
+
+  const finish = (direction: -1 | 1) => {
+    if (leaving !== 0) return
+    setDrag(null)
+    setLeaving(direction)
+    window.setTimeout(() => {
+      setLeaving(0)
+      onSwipe()
+    }, LEAVE_MS)
+  }
+
+  useEffect(() => {
+    if (!flipped || !swipeable) return
+    const onKey = (e: globalThis.KeyboardEvent) => {
+      if (e.key === 'ArrowRight') finish(1)
+      if (e.key === 'ArrowLeft') finish(-1)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  })
+
+  const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
+    if (leaving !== 0) return
+    start.current = { x: e.clientX, y: e.clientY, moved: false }
+    if (flipped && swipeable) e.currentTarget.setPointerCapture(e.pointerId)
+  }
+  const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    const s = start.current
+    if (!s || !flipped || !swipeable) return
+    const dx = e.clientX - s.x
+    const dy = e.clientY - s.y
+    if (Math.abs(dx) > 4 || Math.abs(dy) > 4) s.moved = true
+    setDrag({ dx, dy })
+  }
+  const onPointerUp = (e: PointerEvent<HTMLDivElement>) => {
+    const s = start.current
+    start.current = null
+    if (!s) return
+    if (!flipped) {
+      if (!s.moved) onFlip()
+      return
+    }
+    if (!swipeable) return
+    const dx = e.clientX - s.x
+    if (Math.abs(dx) >= SWIPE_MIN) finish(dx > 0 ? 1 : -1)
+    else setDrag(null)
+  }
+  const onPointerCancel = () => {
+    start.current = null
+    setDrag(null)
+  }
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (!flipped && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault()
+      onFlip()
+    }
+  }
+
+  return (
+    <div className={styles.stack}>
+      {visible.map((card, i) => {
+        const isTop = i === 0
+        let transform = `translateY(${i * 10}px) scale(${1 - i * 0.04})`
+        if (isTop && drag) transform = `translate(${drag.dx}px, ${drag.dy * 0.25}px) rotate(${drag.dx * 0.05}deg)`
+        if (isTop && leaving !== 0) transform = `translateX(${leaving * 130}%) rotate(${leaving * 18}deg)`
+        return (
+          <div
+            key={card.id}
+            className={cx(styles.stackCard, isTop && drag && styles.stackDragging, isTop && leaving !== 0 && styles.stackLeaving)}
+            style={{ transform, zIndex: 10 - i }}
+            role={isTop ? 'button' : undefined}
+            tabIndex={isTop ? 0 : undefined}
+            aria-label={isTop ? (flipped ? `${card.name}, glisse pour voir la suivante` : 'Retourner les cartes') : undefined}
+            onPointerDown={isTop ? onPointerDown : undefined}
+            onPointerMove={isTop ? onPointerMove : undefined}
+            onPointerUp={isTop ? onPointerUp : undefined}
+            onPointerCancel={isTop ? onPointerCancel : undefined}
+            onKeyDown={isTop ? onKeyDown : undefined}
+          >
+            <Card card={card} faceUp={flipped} glow={isTop && flipped} eager />
+          </div>
+        )
+      })}
     </div>
   )
 }
@@ -199,31 +307,31 @@ function Pack({ set, onOpen }: { set: SetData; onOpen: () => void }) {
     <>
       <div className={styles.stage}>
         <div className={styles.stageInner}>
-        <button
-          type="button"
-          className={cx(styles.pack, opening && styles.packOpening)}
-          aria-label="Ouvrir le booster"
-          onClick={begin}
-          onPointerDown={(e) => {
-            startY.current = e.clientY
-          }}
-          onPointerUp={(e) => {
-            if (startY.current !== null && startY.current - e.clientY > 40) begin()
-            startY.current = null
-          }}
-          onAnimationEnd={(e) => {
-            if (e.target === e.currentTarget && opening) finish()
-          }}
-        >
-          <span className={styles.packTop} aria-hidden="true" />
-          <span className={styles.packBody} aria-hidden="true">
-            <img src={symbol} alt="" className={styles.packSymbol} draggable={false} width={64} height={64} />
-            <span className={styles.packSeries}>Pokémon TCG Pocket</span>
-            <span className={styles.packName}>{set.name}</span>
-            <span className={styles.packBrand}>URA</span>
-          </span>
-        </button>
-        <p className={styles.caption}>Touche ou glisse vers le haut pour ouvrir</p>
+          <button
+            type="button"
+            className={cx(styles.pack, opening && styles.packOpening)}
+            aria-label="Ouvrir le booster"
+            onClick={begin}
+            onPointerDown={(e) => {
+              startY.current = e.clientY
+            }}
+            onPointerUp={(e) => {
+              if (startY.current !== null && startY.current - e.clientY > 40) begin()
+              startY.current = null
+            }}
+            onAnimationEnd={(e) => {
+              if (e.target === e.currentTarget && opening) finish()
+            }}
+          >
+            <span className={styles.packTop} aria-hidden="true" />
+            <span className={styles.packBody} aria-hidden="true">
+              <img src={symbol} alt="" className={styles.packSymbol} draggable={false} width={64} height={64} />
+              <span className={styles.packSeries}>Pokémon TCG Pocket</span>
+              <span className={styles.packName}>{set.name}</span>
+              <span className={styles.packBrand}>URA</span>
+            </span>
+          </button>
+          <p className={styles.caption}>Touche ou glisse vers le haut pour ouvrir</p>
         </div>
       </div>
       <div className={styles.footer}>
