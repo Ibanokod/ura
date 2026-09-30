@@ -196,7 +196,8 @@
   font-size: var(--fs-sm);
 }
 
-/* Le paquet : deux blocs (haut détachable, corps), coins arrondis, symbole de l'extension. */
+/* Le paquet : bande scellée en haut (deux calques : le reste attaché et le morceau arraché,
+   découpés par la progression de la déchirure) et corps. Le doigt déchire le long du haut. */
 .pack {
   position: relative;
   display: flex;
@@ -206,18 +207,66 @@
   border-radius: var(--r-md);
   overflow: visible;
   box-shadow: var(--shadow-2);
-  transition: transform var(--dur-fast) var(--ease);
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
 }
 
-.pack:active {
-  transform: scale(0.98);
+.pack:focus-visible {
+  outline: 2px solid var(--water);
+  outline-offset: 6px;
 }
 
-/* Bande scellée (se détache à l'ouverture) et corps : deux dessins SVG, même vocabulaire
-   que le dos de carte. */
+.packDragging {
+  cursor: grabbing;
+}
+
 .packTop {
   display: block;
+  position: relative;
   height: 13%;
+}
+
+.packLayer {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.packBase {
+  transition: clip-path var(--dur-fast) var(--ease);
+}
+
+/* Le morceau arraché se soulève avec la déchirure, puis s'envole à la fin. */
+.packFlap {
+  transform-origin: 100% 100%;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45));
+  transition: clip-path var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.packDragging .packBase,
+.packDragging .packFlap {
+  transition: none;
+}
+
+/* Point de coupe qui suit le doigt sur la ligne de déchirure. */
+.tearCursor {
+  position: absolute;
+  bottom: 4%;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, rgba(62, 193, 243, 0.7) 35%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease);
+  pointer-events: none;
+}
+
+.tearCursorOn {
+  opacity: 1;
 }
 
 .packBody {
@@ -232,17 +281,17 @@
   height: 100%;
 }
 
-.packOpening .packTop {
-  animation: tear var(--dur-slow) var(--ease) forwards;
+.packOpening .packFlap {
+  animation: flapAway 500ms var(--ease) forwards;
 }
 
 .packOpening {
-  animation: packOut var(--dur-slow) var(--ease) calc(var(--dur-slow) * 0.7) forwards;
+  animation: packOut var(--dur-slow) var(--ease) 350ms forwards;
 }
 
-@keyframes tear {
+@keyframes flapAway {
   to {
-    transform: translateY(-70px) rotate(-8deg);
+    transform: translate(-36px, -150px) rotate(-24deg);
     opacity: 0;
   }
 }

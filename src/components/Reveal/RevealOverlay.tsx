@@ -278,21 +278,43 @@ function Stack({ cards, revealed, flipped, swipeable, onFlip, onSwipe }: StackPr
   )
 }
 
-/** Bande supérieure du paquet : bord cranté comme une pochette scellée, ligne de déchirure. */
-function PackTopArt() {
-  const teeth: string[] = []
-  for (let x = 0; x <= 630; x += 15) teeth.push(`${x} ${x % 30 === 0 ? 14 : 2}`)
+/**
+ * Bande scellée du paquet : bord cranté, stries de soudure, cadre dans la continuité du corps,
+ * ligne de déchirure dorée. La variante « flap » (le morceau arraché) a le bas déchiqueté.
+ */
+function PackTopArt({ variant }: { variant: 'base' | 'flap' }) {
+  const crimp: string[] = []
+  for (let x = 0; x <= 630; x += 12) crimp.push(`${x} ${x % 24 === 0 ? 10 : 0}`)
+  const ragged: string[] = []
+  for (let x = 630; x >= 0; x -= 18) ragged.push(`${x} ${x % 36 === 0 ? 120 : 111}`)
+  const outline = variant === 'flap' ? `M${crimp.join(' L')} L630 120 L${ragged.join(' L')} Z` : `M${crimp.join(' L')} L630 120 L0 120 Z`
+  const gradientId = `ura-pack-top-${variant}`
   return (
     <svg className={styles.packArt} viewBox="0 0 630 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
       <defs>
-        <linearGradient id="ura-pack-top" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#1c4d8f" />
-          <stop offset="1" stopColor="#0f2a57" />
+        <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#2c63ad" />
+          <stop offset="0.4" stopColor="#1c4d8f" />
+          <stop offset="1" stopColor="#153a72" />
         </linearGradient>
+        <clipPath id={`${gradientId}-clip`}>
+          <path d={outline} />
+        </clipPath>
       </defs>
-      <path d={`M${teeth.join(' L')} L630 120 L0 120 Z`} fill="url(#ura-pack-top)" />
-      <path d={`M${teeth.join(' L')}`} fill="none" stroke="#3ec1f3" strokeOpacity="0.55" strokeWidth="2" />
-      <line x1="24" y1="108" x2="606" y2="108" stroke="#e9eef7" strokeOpacity="0.5" strokeWidth="2" strokeDasharray="12 8" />
+      <path d={outline} fill={`url(#${gradientId})`} />
+      <g clipPath={`url(#${gradientId}-clip)`}>
+        {/* Stries de soudure à chaud, sous le bord cranté */}
+        {[18, 26, 34, 42].map((y) => (
+          <line key={y} x1="0" y1={y} x2="630" y2={y} stroke="#e9eef7" strokeOpacity="0.14" strokeWidth="2" />
+        ))}
+        {/* Cadre dans la continuité du corps */}
+        <path d="M20 52V120M610 52V120" stroke="#3ec1f3" strokeOpacity="0.6" strokeWidth="3" />
+        <path d="M34 60V120M596 60V120" stroke="#f2c14e" strokeOpacity="0.4" strokeWidth="1.5" />
+        <path d="M20 52H610" stroke="#3ec1f3" strokeOpacity="0.35" strokeWidth="2" />
+        {/* Ligne de déchirure */}
+        <line x1="0" y1="106" x2="630" y2="106" stroke="#f2c14e" strokeOpacity="0.7" strokeWidth="2" strokeDasharray="4 8" />
+      </g>
+      <path d={`M${crimp.join(' L')}`} fill="none" stroke="#7fd6f7" strokeOpacity="0.7" strokeWidth="2" />
     </svg>
   )
 }
@@ -374,63 +396,147 @@ function PackBodyArt({ name, symbol }: { name: string; symbol: string }) {
   )
 }
 
-/** Le paquet fermé : touche ou glisse vers le haut pour le déchirer. Visuel maison. */
+/** Part de la largeur du paquet à parcourir du doigt pour déchirer entièrement la bande. */
+const TEAR_TRAVEL = 0.75
+/** Progression à partir de laquelle la bande finit de s'arracher toute seule. */
+const TEAR_DONE = 0.9
+
+/**
+ * Le paquet fermé, comme dans le jeu : on glisse le doigt le long du haut, la déchirure suit
+ * le doigt, la bande se soulève, puis s'envole. Un tap ou le bouton jouent la même déchirure
+ * automatiquement.
+ */
 function Pack({ set, onOpen }: { set: SetData; onOpen: () => void }) {
+  const [tear, setTear] = useState(0)
+  const [dragging, setDragging] = useState(false)
   const [opening, setOpening] = useState(false)
-  const startY = useRef<number | null>(null)
+  const tearRef = useRef(0)
+  const phase = useRef<'idle' | 'auto' | 'open'>('idle')
+  const start = useRef<{ x: number; width: number; moved: boolean } | null>(null)
   const done = useRef(false)
   const symbol = setSymbolUrl(set)
 
-  // Une seule sortie, quoi qu'il arrive : fin d'animation, ou filet de sécurité si
-  // l'animation ne se joue pas (onglet en arrière-plan, mouvement réduit).
   const finish = () => {
     if (done.current) return
     done.current = true
     onOpen()
   }
 
-  const begin = () => {
-    if (opening) return
+  const progress = (value: number) => {
+    tearRef.current = value
+    setTear(value)
+  }
+
+  // La bande finit de s'arracher, le paquet s'efface, les cartes arrivent.
+  const complete = () => {
+    if (phase.current === 'open') return
+    phase.current = 'open'
+    progress(1)
+    setDragging(false)
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       finish()
       return
     }
     setOpening(true)
-    window.setTimeout(finish, 1500)
+    window.setTimeout(finish, 1100)
   }
+
+  // Déchirure automatique (tap, bouton, clavier) : de la position actuelle jusqu'au bout.
+  const autoTear = () => {
+    if (phase.current !== 'idle') return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      complete()
+      return
+    }
+    phase.current = 'auto'
+    const from = tearRef.current
+    const t0 = performance.now()
+    const step = (t: number) => {
+      const k = Math.min(1, (t - t0) / 550)
+      progress(from + (1 - from) * (1 - Math.pow(1 - k, 3)))
+      if (k < 1) requestAnimationFrame(step)
+      else complete()
+    }
+    requestAnimationFrame(step)
+  }
+
+  const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
+    if (phase.current !== 'idle') return
+    start.current = { x: e.clientX, width: e.currentTarget.getBoundingClientRect().width, moved: false }
+    e.currentTarget.setPointerCapture(e.pointerId)
+    setDragging(true)
+  }
+  const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    const s = start.current
+    if (!s || phase.current !== 'idle') return
+    const dx = Math.abs(e.clientX - s.x)
+    if (dx > 4) s.moved = true
+    const p = Math.min(1, dx / (s.width * TEAR_TRAVEL))
+    if (p > tearRef.current) progress(p)
+    if (p >= 1) {
+      start.current = null
+      complete()
+    }
+  }
+  const onPointerUp = () => {
+    const s = start.current
+    start.current = null
+    if (!s || phase.current !== 'idle') return
+    setDragging(false)
+    if (!s.moved) autoTear()
+    else if (tearRef.current >= TEAR_DONE) complete()
+    else progress(0)
+  }
+  const onPointerCancel = () => {
+    start.current = null
+    setDragging(false)
+    if (phase.current === 'idle') progress(0)
+  }
+
+  const flapStyle = {
+    clipPath: `inset(0 ${(1 - tear) * 100}% 0 0)`,
+    transform: `translateY(${-8 * tear}px) rotate(${-4 * tear}deg)`,
+  }
+  const baseStyle = { clipPath: `inset(0 0 0 ${tear * 100}%)` }
 
   return (
     <>
       <div className={styles.stage}>
         <div className={styles.stageInner}>
-          <button
-            type="button"
-            className={cx(styles.pack, opening && styles.packOpening)}
-            aria-label="Ouvrir le booster"
-            onClick={begin}
-            onPointerDown={(e) => {
-              startY.current = e.clientY
-            }}
-            onPointerUp={(e) => {
-              if (startY.current !== null && startY.current - e.clientY > 40) begin()
-              startY.current = null
-            }}
-            onAnimationEnd={(e) => {
-              if (e.target === e.currentTarget && opening) finish()
+          <div
+            className={cx(styles.pack, dragging && styles.packDragging, opening && styles.packOpening)}
+            role="button"
+            tabIndex={0}
+            aria-label="Déchirer le booster"
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={onPointerCancel}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                autoTear()
+              }
             }}
           >
             <span className={styles.packTop} aria-hidden="true">
-              <PackTopArt />
+              <span className={cx(styles.packLayer, styles.packBase)} style={baseStyle}>
+                <PackTopArt variant="base" />
+              </span>
+              <span className={cx(styles.packLayer, styles.packFlap)} style={flapStyle}>
+                <PackTopArt variant="flap" />
+              </span>
+              <span className={cx(styles.tearCursor, dragging && tear > 0 && tear < 1 && styles.tearCursorOn)} style={{ left: `${tear * 100}%` }} />
             </span>
             <span className={styles.packBody} aria-hidden="true">
               <PackBodyArt name={set.name} symbol={symbol} />
             </span>
-          </button>
-          <p className={styles.caption}>Touche ou glisse vers le haut pour ouvrir</p>
+          </div>
+          <p className={styles.caption}>Glisse ton doigt le long du haut pour déchirer le paquet</p>
         </div>
       </div>
       <div className={styles.footer}>
-        <button type="button" className="btn btn-primary btn-block btn-lg" onClick={begin}>
+        <button type="button" className="btn btn-primary btn-block btn-lg" onClick={autoTear}>
           Ouvrir le booster
         </button>
       </div>

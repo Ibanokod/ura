@@ -89,7 +89,9 @@ ici. Lancer `npm audit` avant chaque déploiement.
   centrée sur la jauge ; fiche de carte en fenêtre centrée avec « Fermer » en bas, flèches
   et glissement latéral entre cartes (`CardViewer`), réglages dans la même fenêtre
 - [x] Retour d'Iban du 30/09 : ouverture de booster façon jeu (pile face cachée, un tap
-  retourne tout, glissements latéraux pour découvrir les cartes), plus de bouton « suivante »
+  retourne tout, glissements latéraux pour découvrir les cartes), plus de bouton « suivante » ;
+  dos de carte et paquet redessinés en SVG (originaux, cohérents) ; déchirure du paquet au
+  doigt le long du haut, la bande suit le geste puis s'envole
 - [ ] Validation visuelle finale par Iban, puis DESIGN.md passe en « acté »
 - [ ] Étape 11 : clôture (cartographie, état, commit)
 

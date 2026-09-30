@@ -74,7 +74,8 @@ visible. Aucun défilement horizontal nulle part.
 
 - Carte seule : dos maison, tap = retournement 3D, halo selon la rareté, fiche détaillée
   dessous.
-- Booster : paquet maison au symbole de l'extension, tap ou glisser pour ouvrir ; les 5
+- Booster : paquet maison au symbole de l'extension, qu'on déchire en glissant le doigt le
+  long du haut (la déchirure suit le doigt ; un tap ou le bouton la jouent tout seuls) ; les 5
   cartes arrivent en pile face cachée ; un tap retourne toute la pile ; ensuite chaque
   glissement sur le côté (doigt, souris, touches ← →) envoie la carte du dessus et découvre
   la suivante, la fiche détaillée suit la carte visible ; « Tout révéler » ; bilan
