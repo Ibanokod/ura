@@ -5,11 +5,13 @@ Traqueur d'eau personnel avec récompenses façon Pokémon TCG Pocket (une carte
 
 ## Statut : projet personnel d'Iban, pas Miatu
 
-Malgré son emplacement dans `Proiektuak\`, ce projet est **personnel**. Aucune ressource de
-Miatu (serveurs, outils, organisation GitHub) n'est utilisée et aucun document Miatu ne le
-cite. Dépôt git à la racine de ce dossier, publié sur le compte personnel GitHub
-`Ibanokod/ura` (dépôt public : code seulement) et servi par GitHub Pages. Les données de
-l'utilisateur (consommation, collection) vivent dans le navigateur, **jamais dans le dépôt**.
+Projet **personnel**, rangé dans la racine perso `~\Claude\Perso\Ura` (déplacé de
+`Proiektuak\` le 30/09/2026). Aucune ressource de Miatu (serveurs, outils, organisation
+GitHub) n'est utilisée et aucun document Miatu ne le cite. Dépôt git à la racine de ce
+dossier, commits signés avec l'identité globale Ganitek, publié sur le compte personnel
+GitHub `Ibanokod/ura` (dépôt public : code seulement) et servi par GitHub Pages. Les
+données de l'utilisateur (consommation, collection) vivent dans le navigateur, **jamais
+dans le dépôt**.
 
 ## Sources de vérité
 
