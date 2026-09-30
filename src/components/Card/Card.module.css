@@ -58,26 +58,14 @@
 
 .back {
   transform: rotateY(180deg);
-  background: var(--surface-2);
-  border: 2px solid var(--border-strong);
+  background: #0b1a3a;
 }
 
+/* Illustration SVG du dos : remplit la face, nette à toute taille. */
 .backArt {
+  display: block;
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6%;
-  background-image: radial-gradient(rgba(62, 193, 243, 0.16) 1px, transparent 1.6px);
-  background-size: 12px 12px;
-}
-
-.backWord {
-  font-size: clamp(8px, 9cqw, 16px);
-  font-weight: 800;
-  letter-spacing: 0.3em;
-  color: rgba(233, 238, 247, 0.55);
 }
 
 /* Halos de rareté : seul effet lumineux de l'appli, uniquement carte visible. */

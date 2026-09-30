@@ -96,8 +96,14 @@ Couleurs des types d'énergie (fiche de carte uniquement : pastilles de coût, t
 - **Jauge d'eau** : cylindre arrondi, remplissage `--water` vers `--water-deep`, ligne
   d'objectif à 1,5 L, dépassement affiché au-dessus en `--success`. Vague légère à l'ajout,
   aucune animation permanente.
-- **Carte** : image TCGdex plein cadre ; **dos maison** (fond `--surface-2`, goutte d'eau en
-  `--water`, motif discret) ; halo de révélation dans la couleur de la rareté.
+- **Carte** : image TCGdex plein cadre ; **dos maison** en SVG, la seule illustration
+  dessinée de l'appli (refonte du 30/09, l'ancien dos plat ne plaisait pas) : fond bleu nuit
+  en dégradé radial, motif de vagues, cadre double bleu eau et or fin, ornements d'angle,
+  médaillon partagé par une vague (nuit en haut, eau en bas) avec la goutte au centre d'une
+  pastille claire, couronne de points, « URA · Traqueur d'eau », reflet diagonal léger.
+  Étant une illustration, il échappe à l'interdit des dégradés décoratifs. Le dos officiel
+  Pokémon n'est jamais utilisé (œuvre et marques protégées, même sans commerce). Halo de
+  révélation dans la couleur de la rareté.
 - **Barre du bas** : 3 onglets, icônes lucide 24 px + libellé, actif en `--water`, fond
   `--surface`, bord haut `--border`, marge de sécurité iOS respectée.
 - **Fenêtre** (réglages, fiche de carte) : centrée sur tous les écrans, fond `--surface-2`,
