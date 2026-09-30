@@ -104,6 +104,12 @@ Couleurs des types d'énergie (fiche de carte uniquement : pastilles de coût, t
   Étant une illustration, il échappe à l'interdit des dégradés décoratifs. Le dos officiel
   Pokémon n'est jamais utilisé (œuvre et marques protégées, même sans commerce). Halo de
   révélation dans la couleur de la rareté.
+- **Paquet (booster)** : même vocabulaire que le dos de carte, en deux dessins SVG : une
+  bande scellée en haut (13 % de la hauteur, bord cranté comme une pochette, ligne de
+  déchirure pointillée) qui se détache à l'ouverture, et le corps (dégradé, vagues, cadre
+  double, ornements en bas, couronne de points, médaillon à la vague avec le symbole de
+  l'extension dans la pastille claire, « Pokémon TCG Pocket », nom de l'extension, « URA »,
+  reflet). Ratio 11 / 17, largeur `min(58vw, 220px)`.
 - **Barre du bas** : 3 onglets, icônes lucide 24 px + libellé, actif en `--water`, fond
   `--surface`, bord haut `--border`, marge de sécurité iOS respectée.
 - **Fenêtre** (réglages, fiche de carte) : centrée sur tous les écrans, fond `--surface-2`,

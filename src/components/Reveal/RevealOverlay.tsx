@@ -278,6 +278,102 @@ function Stack({ cards, revealed, flipped, swipeable, onFlip, onSwipe }: StackPr
   )
 }
 
+/** Bande supérieure du paquet : bord cranté comme une pochette scellée, ligne de déchirure. */
+function PackTopArt() {
+  const teeth: string[] = []
+  for (let x = 0; x <= 630; x += 15) teeth.push(`${x} ${x % 30 === 0 ? 14 : 2}`)
+  return (
+    <svg className={styles.packArt} viewBox="0 0 630 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="ura-pack-top" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#1c4d8f" />
+          <stop offset="1" stopColor="#0f2a57" />
+        </linearGradient>
+      </defs>
+      <path d={`M${teeth.join(' L')} L630 120 L0 120 Z`} fill="url(#ura-pack-top)" />
+      <path d={`M${teeth.join(' L')}`} fill="none" stroke="#3ec1f3" strokeOpacity="0.55" strokeWidth="2" />
+      <line x1="24" y1="108" x2="606" y2="108" stroke="#e9eef7" strokeOpacity="0.5" strokeWidth="2" strokeDasharray="12 8" />
+    </svg>
+  )
+}
+
+/** Corps du paquet : même vocabulaire que le dos de carte, le symbole de l'extension au centre. */
+function PackBodyArt({ name, symbol }: { name: string; symbol: string }) {
+  const dots = Array.from({ length: 20 }, (_, i) => {
+    const angle = (i / 20) * Math.PI * 2
+    return { x: 315 + Math.cos(angle) * 190, y: 330 + Math.sin(angle) * 190 }
+  })
+  return (
+    <svg className={styles.packArt} viewBox="0 0 630 850" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="ura-pack-bg" cx="50%" cy="40%" r="75%">
+          <stop offset="0" stopColor="#1c4d8f" />
+          <stop offset="0.55" stopColor="#0f2a57" />
+          <stop offset="1" stopColor="#061127" />
+        </radialGradient>
+        <linearGradient id="ura-pack-water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#3ec1f3" />
+          <stop offset="1" stopColor="#1b5fb3" />
+        </linearGradient>
+        <linearGradient id="ura-pack-sheen" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0.3" stopColor="#ffffff" stopOpacity="0" />
+          <stop offset="0.5" stopColor="#ffffff" stopOpacity="0.09" />
+          <stop offset="0.7" stopColor="#ffffff" stopOpacity="0" />
+        </linearGradient>
+        <pattern id="ura-pack-waves" width="64" height="32" patternUnits="userSpaceOnUse">
+          <path d="M0 16q16-14 32 0t32 0" fill="none" stroke="#3ec1f3" strokeOpacity="0.13" strokeWidth="2" />
+        </pattern>
+        <clipPath id="ura-pack-medal">
+          <circle cx="315" cy="330" r="150" />
+        </clipPath>
+      </defs>
+
+      <path d="M0 0H630V822a28 28 0 0 1-28 28H28a28 28 0 0 1-28-28Z" fill="url(#ura-pack-bg)" />
+      <path d="M0 0H630V822a28 28 0 0 1-28 28H28a28 28 0 0 1-28-28Z" fill="url(#ura-pack-waves)" />
+
+      <path d="M20 0V804a20 20 0 0 0 20 20h550a20 20 0 0 0 20-20V0" fill="none" stroke="#3ec1f3" strokeOpacity="0.6" strokeWidth="3" />
+      <path d="M34 0V792a14 14 0 0 0 14 14h534a14 14 0 0 0 14-14V0" fill="none" stroke="#f2c14e" strokeOpacity="0.4" strokeWidth="1.5" />
+
+      {[
+        [572, 790, 3],
+        [58, 790, 4],
+      ].map(([x, y, q]) => (
+        <g key={q} transform={`translate(${x} ${y}) rotate(${(q - 1) * 90})`}>
+          <path d="M0 40 A40 40 0 0 1 40 0" fill="none" stroke="#f2c14e" strokeOpacity="0.55" strokeWidth="2" />
+          <circle cx="0" cy="0" r="4" fill="#f2c14e" fillOpacity="0.7" />
+        </g>
+      ))}
+
+      {dots.map((d, i) => (
+        <circle key={i} cx={d.x} cy={d.y} r={i % 5 === 0 ? 4 : 2.2} fill={i % 5 === 0 ? '#f2c14e' : '#3ec1f3'} fillOpacity="0.7" />
+      ))}
+
+      <circle cx="315" cy="330" r="170" fill="none" stroke="#3ec1f3" strokeOpacity="0.35" strokeWidth="2" />
+      <circle cx="315" cy="330" r="158" fill="none" stroke="#f2c14e" strokeOpacity="0.55" strokeWidth="3" />
+      <g clipPath="url(#ura-pack-medal)">
+        <circle cx="315" cy="330" r="150" fill="#0a2148" />
+        <path d="M160 346q39-28 78 0t78 0 78 0 78 0V500H160Z" fill="url(#ura-pack-water)" />
+        <path d="M160 362q39-28 78 0t78 0 78 0 78 0V500H160Z" fill="#e9eef7" fillOpacity="0.08" />
+      </g>
+      <circle cx="315" cy="330" r="74" fill="#e9eef7" />
+      <circle cx="315" cy="330" r="64" fill="#0b1220" />
+      <image href={symbol} x="271" y="286" width="88" height="88" />
+
+      <text x="315" y="560" textAnchor="middle" fontFamily="'Manrope Variable', system-ui, sans-serif" fontWeight="700" fontSize="18" letterSpacing="6" fill="#3ec1f3" fillOpacity="0.85">
+        POKÉMON TCG POCKET
+      </text>
+      <text x="315" y="620" textAnchor="middle" fontFamily="'Manrope Variable', system-ui, sans-serif" fontWeight="800" fontSize="42" fill="#e9eef7">
+        {name}
+      </text>
+      <text x="315" y="760" textAnchor="middle" fontFamily="'Manrope Variable', system-ui, sans-serif" fontWeight="800" fontSize="26" letterSpacing="12" fill="#e9eef7" fillOpacity="0.6">
+        URA
+      </text>
+
+      <path d="M0 0H630V822a28 28 0 0 1-28 28H28a28 28 0 0 1-28-28Z" fill="url(#ura-pack-sheen)" />
+    </svg>
+  )
+}
+
 /** Le paquet fermé : touche ou glisse vers le haut pour le déchirer. Visuel maison. */
 function Pack({ set, onOpen }: { set: SetData; onOpen: () => void }) {
   const [opening, setOpening] = useState(false)
@@ -323,12 +419,11 @@ function Pack({ set, onOpen }: { set: SetData; onOpen: () => void }) {
               if (e.target === e.currentTarget && opening) finish()
             }}
           >
-            <span className={styles.packTop} aria-hidden="true" />
+            <span className={styles.packTop} aria-hidden="true">
+              <PackTopArt />
+            </span>
             <span className={styles.packBody} aria-hidden="true">
-              <img src={symbol} alt="" className={styles.packSymbol} draggable={false} width={64} height={64} />
-              <span className={styles.packSeries}>Pokémon TCG Pocket</span>
-              <span className={styles.packName}>{set.name}</span>
-              <span className={styles.packBrand}>URA</span>
+              <PackBodyArt name={set.name} symbol={symbol} />
             </span>
           </button>
           <p className={styles.caption}>Touche ou glisse vers le haut pour ouvrir</p>

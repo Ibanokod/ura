@@ -213,60 +213,23 @@
   transform: scale(0.98);
 }
 
+/* Bande scellée (se détache à l'ouverture) et corps : deux dessins SVG, même vocabulaire
+   que le dos de carte. */
 .packTop {
   display: block;
   height: 13%;
-  background: var(--surface-2);
-  border: 1px solid var(--border-strong);
-  border-bottom: 1px dashed rgba(233, 238, 247, 0.4);
-  border-radius: var(--r-md) var(--r-md) 0 0;
 }
 
 .packBody {
+  display: block;
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-3);
-  background: var(--surface-2);
-  border: 1px solid var(--border-strong);
-  border-top: 0;
-  border-radius: 0 0 var(--r-md) var(--r-md);
-  background-image: radial-gradient(rgba(62, 193, 243, 0.14) 1px, transparent 1.6px);
-  background-size: 12px 12px;
+  min-height: 0;
 }
 
-.packSymbol {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
-}
-
-.packSeries {
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.packName {
-  font-weight: 800;
-  font-size: var(--fs-lg);
-  line-height: 1.15;
-  text-align: center;
-  padding: 0 var(--sp-3);
-}
-
-.packBrand {
-  position: absolute;
-  bottom: 6%;
-  font-size: var(--fs-xs);
-  font-weight: 800;
-  letter-spacing: 0.3em;
-  color: rgba(233, 238, 247, 0.5);
+.packArt {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .packOpening .packTop {
