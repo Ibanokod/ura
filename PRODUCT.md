@@ -72,10 +72,14 @@ visible. Aucun défilement horizontal nulle part.
 
 ### Révélation (plein écran, par-dessus les onglets)
 
-- Carte seule : dos maison, tap = retournement 3D, halo selon la rareté.
-- Booster : paquet maison au symbole de l'extension, tap ou glisser pour ouvrir, 5 cartes dos
-  visible, un tap par carte, « Tout révéler », bilan « 5 nouvelles cartes ». Bannière
-  « Paquet rare ! » si le tirage l'a donné.
+- Carte seule : dos maison, tap = retournement 3D, halo selon la rareté, fiche détaillée
+  dessous.
+- Booster : paquet maison au symbole de l'extension, tap ou glisser pour ouvrir ; les 5
+  cartes arrivent en pile face cachée ; un tap retourne toute la pile ; ensuite chaque
+  glissement sur le côté (doigt, souris, touches ← →) envoie la carte du dessus et découvre
+  la suivante, la fiche détaillée suit la carte visible ; « Tout révéler » ; bilan
+  « 5 nouvelles cartes ». Bannière « Paquet rare ! » si le tirage l'a donné (retour d'Iban
+  du 30/09 : plus de retournement carte par carte ni de bouton « suivante »).
 - Plusieurs récompenses dues (grosse saisie) : révélées l'une après l'autre.
 - Appli fermée pendant une révélation : elle reprend là où elle en était.
 - `prefers-reduced-motion` : retournement sans animation.

@@ -137,6 +137,12 @@ Couleurs des types d'énergie (fiche de carte uniquement : pastilles de coût, t
 
 - Courbe `cubic-bezier(.2,.8,.2,1)` ; durées 150 ms (retours), 250 ms (transitions),
   600 ms (retournement de carte).
+- **Pile du booster** (retour d'Iban du 30/09) : trois cartes visibles au plus, décalées de
+  10 px et réduites de 4 % à chaque rang ; un tap retourne toute la pile (le retournement
+  de 600 ms) ; ensuite la carte du dessus suit le doigt (rotation de 0,05° par px), part
+  sur le côté en 280 ms à partir de 70 px de glissement, ou revient en place sinon ; la
+  carte suivante remonte au premier rang en 250 ms. Pas de bouton « suivante » : le geste
+  seul, plus les touches ← → et « Tout révéler ».
 - `prefers-reduced-motion: reduce` : toutes les durées passent à 0 ms, les cartes
   apparaissent directement face visible.
 
