@@ -176,6 +176,16 @@ force en Deux Étoiles, comme toutes leurs voisines (correction visible dans `OV
   masqué ; workflow avec permissions minimales ; `npm audit` sans vulnérabilité au
   21/09/2026.
 
+## Droits sur les visuels Pokémon (décision du 30/09/2026)
+
+Le dos officiel des cartes Pokémon n'est pas utilisé, même si le projet est personnel et
+sans commerce : c'est une œuvre protégée (droit d'auteur) qui porte des marques déposées
+(Poké Ball, logo), et l'exception de copie privée ne couvre pas un dépôt public ni un site
+en ligne. Le dos de carte est donc une illustration originale (voir `DESIGN.md`). Les
+recto sont affichés depuis le CDN communautaire TCGdex sans être stockés dans le dépôt,
+comme le font les sites de fans : tolérance d'usage, pas un droit ; l'appli reste
+personnelle et non commerciale, et sa page est `noindex`.
+
 ## Hors périmètre v1
 
 - Autres extensions et choix du paquet (Mewtwo, Dracaufeu, Pikachu) : `boosters` existe
